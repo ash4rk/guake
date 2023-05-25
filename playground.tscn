@@ -32,7 +32,7 @@ bg_color = Color(0, 0.756863, 0.329412, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0egn"]
 size = Vector3(390.957, 1222.22, 529.805)
 
-[node name="World" type="Node"]
+[node name="World2" type="Node"]
 script = ExtResource("1_fxj0f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

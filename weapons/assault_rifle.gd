@@ -1,6 +1,7 @@
 extends Weapon
 
 @onready var DECAL_SCENE = preload("res://weapons/bullet_hole_decal.tscn")
+@onready var BLOOD_PARTICLES_SCENE = preload("res://scenes/blood_particles.tscn")
 
 func _process(delta):
 	if not is_multiplayer_authority(): return
@@ -21,6 +22,8 @@ func fire(_delta):
 	if ray_cast.get_collider() != null and ray_cast.get_collider().is_in_group("players"):
 		var hit_player = ray_cast.get_collider()
 		hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
+		_play_blood_particles.rpc(ray_cast.get_collision_point())
+		
 
 	await get_tree().create_timer(firerate).timeout
 	if ray_cast.is_colliding():
@@ -38,6 +41,15 @@ func _place_decal(point: Vector3):
 	var tween = get_tree().create_tween()
 	tween.tween_interval(3)
 	tween.tween_callback(func():decal.free())
+
+@rpc("call_local")
+func _play_blood_particles(point: Vector3):
+	var blood_particles = BLOOD_PARTICLES_SCENE.instantiate()
+	get_tree().get_root().add_child(blood_particles)
+	blood_particles.global_transform.origin = point
+	var tween = get_tree().create_tween()
+	tween.tween_interval(3)
+	tween.tween_callback(func():blood_particles.free())
 
 @rpc("call_local")
 func play_shoot_effects():
