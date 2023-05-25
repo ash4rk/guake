@@ -34,7 +34,6 @@ func weapon_switch():
 	get_child(current_weapon).show()
 	get_child(current_weapon).process_mode = Node.PROCESS_MODE_INHERIT
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_weapon_animation_player_animation_finished(anim_name):
 	if anim_name == "shoot":
 		anim_player.play("idle")
-
