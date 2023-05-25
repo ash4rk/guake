@@ -29,7 +29,7 @@ metadata/_edit_group_ = true
 [node name="Title" type="Label" parent="Content"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "Game Title"
+text = "GUAKE"
 horizontal_alignment = 1
 
 [node name="IPAddressLineEdit" type="LineEdit" parent="Content"]
