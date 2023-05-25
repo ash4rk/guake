@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://hcfwkhghoe0"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_fxj0f"]
-[ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="2_vp21c"]
+[ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_myorv"]
 [ext_resource type="Material" uid="uid://bly25nr0aqsv3" path="res://addons/ThirdPersonTemplate/Environments/Materials/BlueGrid.material" id="3_anjpt"]
 [ext_resource type="Material" uid="uid://d3up41bo0vjj0" path="res://addons/ThirdPersonTemplate/Environments/Materials/OrangeGrid.material" id="4_kii6k"]
 [ext_resource type="Material" uid="uid://ddpgp1pyklffr" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreenGrid.material" id="6_5rtke"]
@@ -12,9 +12,10 @@
 [sub_resource type="Environment" id="Environment_qyvd4"]
 background_mode = 2
 background_color = Color(0.647059, 0.909804, 0.917647, 1)
-sky = ExtResource("2_vp21c")
-adjustment_enabled = true
-adjustment_saturation = 1.15
+sky = ExtResource("2_myorv")
+fog_light_energy = 0.05
+adjustment_contrast = 0.85
+adjustment_saturation = 0.66
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_52k67"]
 
