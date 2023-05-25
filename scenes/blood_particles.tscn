@@ -21,7 +21,6 @@ material = SubResource("StandardMaterial3D_xo3an")
 size = Vector2(0.1, 0.1)
 
 [node name="BloodParticles" type="GPUParticles3D"]
-emitting = false
 amount = 11
 lifetime = 2.0
 one_shot = true
