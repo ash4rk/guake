@@ -23,6 +23,7 @@ var input_dir = Vector3()
 @onready var rotation_helper: Node3D = $RotationHelper
 var jumper_velocity: = Vector3.ZERO
 # Stats
+@onready var weapon_holder: WeaponHolder = $RotationHelper/PlayerEyes/WeaponHolder
 var health = 3
 
 func _enter_tree():
@@ -138,3 +139,16 @@ func heal(value: int):
 	var new_health = min(MAX_HEALTH, value + health)
 	health = new_health
 	health_changed.emit(health)
+
+@rpc("any_peer")
+func gain_ammo(weapon_id : int, value):
+	match weapon_id:
+		WeaponHolder.WEAPONS.PISTOL:
+			weapon_holder.pistol.ammo += value
+			ammo_changed.emit(weapon_holder.pistol.ammo)
+		WeaponHolder.WEAPONS.ASSAULT_RIFLE:
+			weapon_holder.assault_rifle.ammo += value
+			ammo_changed.emit(weapon_holder.assault_rifle.ammo)
+		WeaponHolder.WEAPONS.SHOTGUN:
+			weapon_holder.shotgun.ammo += value
+			ammo_changed.emit(weapon_holder.shotgun.ammo)

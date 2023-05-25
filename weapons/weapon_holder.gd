@@ -1,3 +1,5 @@
+class_name WeaponHolder
+
 extends Node3D
 
 enum WEAPONS {PISTOL, ASSAULT_RIFLE, SHOTGUN, BAZOOKA, SNIPER_RIFLE}
@@ -5,6 +7,9 @@ enum WEAPONS {PISTOL, ASSAULT_RIFLE, SHOTGUN, BAZOOKA, SNIPER_RIFLE}
 @export var anim_player: AnimationPlayer
 
 var current_weapon = 1
+@onready var pistol = $Pistol
+@onready var assault_rifle = $AssaultRifle
+@onready var shotgun = $Shotgun
 
 func _ready():
 	weapon_switch()

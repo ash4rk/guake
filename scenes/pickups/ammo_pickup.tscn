@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://deihxnfqvnafk"]
+
+[ext_resource type="PackedScene" uid="uid://cv13yp6kp1jwy" path="res://scenes/pickups/pickup.tscn" id="1_2kack"]
+[ext_resource type="Script" path="res://scenes/pickups/ammo_pickup.gd" id="2_cc6s4"]
+
+[node name="AmmoPickup" instance=ExtResource("1_2kack")]
+script = ExtResource("2_cc6s4")
+AMMO_VALUE = 5
+WEAPON_ID = 1
