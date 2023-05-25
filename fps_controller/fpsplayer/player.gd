@@ -17,6 +17,7 @@ const MOUSE_SENSITIVITY = 0.05
 var input_dir = Vector3()
 @onready var camera: Camera3D = $RotationHelper/PlayerEyes
 @onready var rotation_helper: Node3D = $RotationHelper
+var jumper_velocity: = Vector3.ZERO
 # Stats
 var health = 3
 
@@ -100,7 +101,10 @@ func _process_movement(delta):
 	velocity.x = hvel.x
 	velocity.z = hvel.z
 	
+	velocity += jumper_velocity
+	
 	move_and_slide()
+	jumper_velocity = Vector3.ZERO
 
 func _process_animation():
 	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector3.ZERO)

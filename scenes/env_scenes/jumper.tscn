@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dur35ccvrr4ju"]
+
+[ext_resource type="Script" path="res://scenes/env_scenes/jumper.gd" id="1_m3s5t"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lyvsp"]
+height = 0.065
+radius = 0.823
+
+[node name="Jumper" type="Node3D"]
+script = ExtResource("1_m3s5t")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+inner_radius = 0.9
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00867099, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_lyvsp")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
