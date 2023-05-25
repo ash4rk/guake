@@ -1,0 +1,479 @@
+[gd_scene load_steps=17 format=3 uid="uid://bncaql8n6ykwg"]
+
+[ext_resource type="Script" path="res://playground.gd" id="1_d23cl"]
+[ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_epyt7"]
+[ext_resource type="Material" uid="uid://bly25nr0aqsv3" path="res://addons/ThirdPersonTemplate/Environments/Materials/BlueGrid.material" id="3_w7hre"]
+[ext_resource type="Material" uid="uid://d3up41bo0vjj0" path="res://addons/ThirdPersonTemplate/Environments/Materials/OrangeGrid.material" id="4_0j706"]
+[ext_resource type="Material" uid="uid://ddpgp1pyklffr" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreenGrid.material" id="5_j2lca"]
+[ext_resource type="Material" uid="uid://cpk3jtowelhgh" path="res://addons/ThirdPersonTemplate/Environments/Materials/PingkGrid.material" id="6_riwj5"]
+[ext_resource type="Material" uid="uid://bquocw2a8n271" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreyGrid.material" id="7_pwfh5"]
+[ext_resource type="PackedScene" uid="uid://dur35ccvrr4ju" path="res://scenes/env_scenes/jumper.tscn" id="8_f7di5"]
+[ext_resource type="PackedScene" uid="uid://deihxnfqvnafk" path="res://scenes/pickups/ammo_pickup.tscn" id="9_obcue"]
+[ext_resource type="PackedScene" uid="uid://b7aoa8aail2r3" path="res://scenes/env_scenes/teleport.tscn" id="10_t5wvh"]
+[ext_resource type="PackedScene" uid="uid://dn6wmmhqlnrsb" path="res://scenes/pickups/health_pickup.tscn" id="11_k2i1m"]
+[ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="12_g4wwp"]
+
+[sub_resource type="Environment" id="Environment_qyvd4"]
+background_mode = 2
+background_color = Color(0.647059, 0.909804, 0.917647, 1)
+sky = ExtResource("2_epyt7")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.25
+fog_light_energy = 0.05
+adjustment_contrast = 0.85
+adjustment_saturation = 0.66
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4vyt"]
+bg_color = Color(0.913725, 0, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15lav"]
+bg_color = Color(0, 0.756863, 0.329412, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f0egn"]
+size = Vector3(390.957, 1222.22, 529.805)
+
+[node name="World" type="Node"]
+script = ExtResource("1_d23cl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.892271, -0.274443, 0.358516, 2.02684e-08, 0.794054, 0.607847, -0.451501, 0.542364, -0.708511, 0, 2.76815, 9.26053)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qyvd4")
+
+[node name="PlayerSpawner" type="Marker3D" parent="."]
+
+[node name="Level" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61855, -2.2406, 0)
+
+[node name="Floor2" type="CSGBox3D" parent="Level"]
+use_collision = true
+size = Vector3(50, 0.5, 100)
+material = ExtResource("3_w7hre")
+
+[node name="RightSecondFloor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134443, 7.66435, -42.0262)
+use_collision = true
+size = Vector3(50, 15.067, 16)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level/RightSecondFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7805, 1.31235)
+operation = 2
+size = Vector3(50, 11.7265, 16.1051)
+material = ExtResource("7_pwfh5")
+
+[node name="RightThirdFloor" type="CSGPolygon3D" parent="Level"]
+transform = Transform3D(1, 0, 1.49502e-08, -1.49502e-08, 4.10753e-08, 1, 0, -1, 4.10753e-08, -17.2529, 25, -38.4531)
+use_collision = true
+polygon = PackedVector2Array(-2, -4, -2, 1, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10, 2, -10, -4)
+depth = 0.5
+material = ExtResource("7_pwfh5")
+
+[node name="RightSecondFloor" type="CSGBox3D" parent="Level/RightThirdFloor"]
+transform = Transform3D(1, 2.38228e-21, -2.52237e-23, 0, 1, -1.59872e-13, 0, 0, 1, -7.48689, 1.31416, -6.80792)
+use_collision = true
+size = Vector3(5, 7.563, 13.2136)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D13" type="CSGPolygon3D" parent="Level/RightThirdFloor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 4.7, -0.5)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D14" type="CSGPolygon3D" parent="Level/RightThirdFloor"]
+transform = Transform3D(-4.37114e-08, 5.29396e-22, -1, 0, 1, 2.11758e-21, 1, 0, -4.37114e-08, -8.45274, -3.97701, 0.140985)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 2.06337, -3.08884)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/RightThirdFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
+transform = Transform3D(0.939693, 0.34202, -8.74228e-08, 0.342021, -0.939693, 0, -8.21506e-08, -2.99004e-08, -1, 2.96824, -2.2554, -2.52924)
+force = 95.0
+
+[node name="LeftSecondFloor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.134443, 7.66435, 41.9952)
+use_collision = true
+size = Vector3(50, 15.067, 16)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level/LeftSecondFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23642, 1.31235)
+operation = 2
+size = Vector3(50, 12.4667, 16.1051)
+material = ExtResource("7_pwfh5")
+
+[node name="LeftThirdFloor" type="CSGPolygon3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -17.2529, 25, 34.8676)
+use_collision = true
+polygon = PackedVector2Array(-2, -4, -2, 1, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10, 2, -10, -4)
+depth = 0.5
+material = ExtResource("7_pwfh5")
+
+[node name="RightSecondFloor" type="CSGBox3D" parent="Level/LeftThirdFloor"]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.74228e-08, 7.64274e-15, -1, -7.48689, 4.71699, 6.09214)
+use_collision = true
+size = Vector3(5, 7.563, 13.2136)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D13" type="CSGPolygon3D" parent="Level/LeftThirdFloor"]
+transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, -4.99999, 1.18838, -0.137037)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D14" type="CSGPolygon3D" parent="Level/LeftThirdFloor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 7.10543e-14, 1, 4.23516e-21, -1, 0, -4.37114e-08, -3.5354, -4.26752, -0.295092)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 2.11888, -2.92669)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/LeftThirdFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
+transform = Transform3D(0.939693, 0.34202, -8.74228e-08, 0.342021, -0.939693, 0, -8.21506e-08, -2.99004e-08, -1, 2.96824, -2.2554, -2.52924)
+force = 95.0
+
+[node name="CentralBridgeSecondFloor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.365, 14.3051, 0)
+use_collision = true
+size = Vector3(7.5, 0.5, 68.059)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Level/CentralBridgeSecondFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.38668, 0, -4.70919e-07)
+use_collision = true
+size = Vector3(3.89012, 0.5, 9.1933)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Level/CentralBridgeSecondFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95661, 0.558074, 25.0164)
+use_collision = true
+size = Vector3(0.44877, 1.58222, 10.1013)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Level/CentralBridgeSecondFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9566, 0.558074, -25.0925)
+use_collision = true
+size = Vector3(0.44877, 1.58222, 10.1013)
+material = ExtResource("7_pwfh5")
+
+[node name="CentralBridgeFirstFloor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 35, 0, 0)
+use_collision = true
+size = Vector3(20.547, 0.5, 7.5)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Level/CentralBridgeFirstFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5907, 0, -1.01329e-06)
+use_collision = true
+size = Vector3(11.2103, 0.5, 11.983)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D14" type="CSGPolygon3D" parent="Level/CentralBridgeFirstFloor"]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -17.1571, 0.176721, -2.00625)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 2.03944, -2.91357)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/CentralBridgeFirstFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
+transform = Transform3D(0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939692, 0, 8.21506e-08, 2.99004e-08, -1, 2.95268, -2.25073, -2.51506)
+force = 100.0
+
+[node name="CentralJumpers" type="CSGPolygon3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.74296, 0, -2.62594)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 5, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D12" type="CSGPolygon3D" parent="Level/CentralJumpers"]
+transform = Transform3D(-1.74483e-05, 0, -1, 0, 1, 0, 1, 0, -1.74483e-05, 0, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/CentralJumpers/CSGBox3D12" instance=ExtResource("8_f7di5")]
+transform = Transform3D(-0.707107, 0.707107, 8.74224e-08, 0.707107, 0.707107, 0, -6.18174e-08, 6.18174e-08, -1, 1.95752, 3.10369, -2.48673)
+force = 40.0
+
+[node name="CSGBox3D13" type="CSGPolygon3D" parent="Level/CentralJumpers"]
+transform = Transform3D(1, 0, 0.000209451, 0, 1, 0, -0.000209451, 0, 1, 5, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/CentralJumpers/CSGBox3D13" instance=ExtResource("8_f7di5")]
+transform = Transform3D(-0.707108, 0.707108, -8.74279e-08, 0.707107, 0.707107, 0, 6.18165e-08, -6.18165e-08, -1, 1.98789, 3.02299, -2.67495)
+force = 50.0
+
+[node name="CSGBox3D14" type="CSGPolygon3D" parent="Level/CentralJumpers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, -5)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/CentralJumpers/CSGBox3D14" instance=ExtResource("8_f7di5")]
+transform = Transform3D(-0.707107, 0.707107, -8.74228e-08, 0.707107, 0.707107, 0, 6.18172e-08, -6.18172e-08, -1, 2.08103, 2.92536, -2.62371)
+force = 40.0
+
+[node name="CSGBox3D15" type="CSGPolygon3D" parent="Level/CentralJumpers"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.05, 0, -5)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/CentralJumpers/CSGBox3D15" instance=ExtResource("8_f7di5")]
+transform = Transform3D(-0.707107, 0.707107, -8.74228e-08, 0.707107, 0.707107, 0, 6.18172e-08, -6.18172e-08, -1, 2.13295, 2.89108, -2.7773)
+force = 50.0
+
+[node name="Jumper" parent="Level/CentralJumpers" instance=ExtResource("8_f7di5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.35527, 5.07817, -2.7773)
+force = 50.0
+
+[node name="JumpToDD" type="CSGPolygon3D" parent="Level"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -45.5981, 16.5938, 2.37406)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="Jumper" parent="Level/JumpToDD" instance=ExtResource("8_f7di5")]
+transform = Transform3D(-0.707107, 0.707107, -8.74228e-08, 0.707107, 0.707107, 0, 6.18172e-08, -6.18172e-08, -1, 1.91604, 3.12585, -2.48189)
+force = 50.0
+
+[node name="DDFloor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.63694, 42.4179, 0)
+use_collision = true
+size = Vector3(15, 2, 15)
+material = ExtResource("4_0j706")
+
+[node name="TeleportOnDDFloor" parent="Level/DDFloor" node_paths=PackedStringArray("exit_point") instance=ExtResource("10_t5wvh")]
+transform = Transform3D(-0.0342717, 0, 0.999413, 0, 1, 0, -0.999413, 0, -0.0342717, 4.28452, 1.30314, -0.0170182)
+exit_point = NodePath("../../TeleportExitCentralRamp")
+
+[node name="SnipePlatform" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.029, 0, 0)
+use_collision = true
+size = Vector3(15, 2, 15)
+material = ExtResource("4_0j706")
+
+[node name="SniperJumperPlatform2" type="CSGPolygon3D" parent="Level/SnipePlatform"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.52301, -4.00968, -12.3795)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="SniperJumper2" parent="Level/SnipePlatform/SniperJumperPlatform2" instance=ExtResource("8_f7di5")]
+transform = Transform3D(-0.707107, 0.707107, 8.74228e-08, 0.707107, 0.707107, 0, -6.18172e-08, 6.18172e-08, -1, 2.19829, 2.82449, -2.58453)
+force = 100.0
+
+[node name="SniperJumperPlatform" type="CSGPolygon3D" parent="Level/SnipePlatform"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.52301, -4.00968, 7.47799)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
+depth = 5.0
+material = ExtResource("7_pwfh5")
+
+[node name="SniperJumper" parent="Level/SnipePlatform/SniperJumperPlatform" instance=ExtResource("8_f7di5")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 2.44499, 2.54308, -2.53256)
+force = 100.0
+
+[node name="JumperLeftSecondFloor" parent="Level" instance=ExtResource("8_f7di5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0378, 15.2258, 38.2133)
+force = 25.0
+
+[node name="JumperRightSecondFloor" parent="Level" instance=ExtResource("8_f7di5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0378, 15.2258, -41.9666)
+
+[node name="TeleportLeftSecondFloor" parent="Level" node_paths=PackedStringArray("exit_point") instance=ExtResource("10_t5wvh")]
+transform = Transform3D(0.606932, 0, -0.794754, 0, 1, 0, 0.794754, 0, 0.606932, -7.43197, 15.171, 47.4203)
+exit_point = NodePath("../TeleportExitCentralRamp")
+
+[node name="TeleportRightSecondFloor" parent="Level" node_paths=PackedStringArray("exit_point") instance=ExtResource("10_t5wvh")]
+transform = Transform3D(-0.758646, 0, -0.651503, 0, 1, 0, 0.651503, 0, -0.758646, -7.43197, 15.171, -47.4447)
+exit_point = NodePath("../TeleportExitCentralRamp")
+
+[node name="TeleportExitCentralRamp" type="Node3D" parent="Level"]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, 25.552, 16.9726, 0.0724213)
+
+[node name="Reference" type="Node3D" parent="Level"]
+visible = false
+
+[node name="Floor" type="CSGBox3D" parent="Level/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.8492, 0.14482, 86.1814)
+use_collision = true
+size = Vector3(47.5872, 0.1, 47.791)
+material = ExtResource("3_w7hre")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level/Reference"]
+transform = Transform3D(0.833182, 0, 0.552999, 0, 1, 0, -0.552999, 0, 0.833182, -39.3076, 3.19482, 71.1674)
+use_collision = true
+size = Vector3(4, 6, 8)
+material = ExtResource("4_0j706")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level/Reference"]
+transform = Transform3D(-0.318513, 0, 0.947919, 0, 1, 0, -0.947919, 0, -0.318513, -55.3076, 13.1948, 90.1674)
+use_collision = true
+size = Vector3(4, 6, 8)
+material = ExtResource("4_0j706")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.8492, 2.19482, 79.1832)
+use_collision = true
+size = Vector3(6, 8, 6)
+material = ExtResource("5_j2lca")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8492, 2.19482, 79.1832)
+use_collision = true
+size = Vector3(4, 4, 6)
+material = ExtResource("5_j2lca")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8492, 1.19482, 75.1832)
+use_collision = true
+size = Vector3(4, 2, 2)
+material = ExtResource("5_j2lca")
+
+[node name="Node3D" type="Node3D" parent="Level/Reference"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -73.3702, 4.76837e-07, 67.4209)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level/Reference/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233154, 0.69482, -0.0343475)
+use_collision = true
+size = Vector3(8, 1, 1)
+material = ExtResource("6_riwj5")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level/Reference/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76685, 1.69482, -0.0343475)
+use_collision = true
+size = Vector3(4, 1, 1)
+material = ExtResource("6_riwj5")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level/Reference/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76685, 2.69482, -0.0343475)
+use_collision = true
+material = ExtResource("6_riwj5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.8492, 5.19482, 90.1814)
+use_collision = true
+size = Vector3(24, 10, 16)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level/Reference/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -3, -7)
+operation = 2
+size = Vector3(4, 6, 2)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level/Reference/CSGBox3D"]
+transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 11, -3, 0)
+operation = 2
+size = Vector3(12, 6, 2)
+material = ExtResource("7_pwfh5")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level/Reference/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+operation = 2
+size = Vector3(22, 10, 14)
+material = ExtResource("7_pwfh5")
+
+[node name="HealthPickup" parent="Level/Reference" instance=ExtResource("11_k2i1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4324, 0.46872, 86.1814)
+is_respawnable = true
+respawn_time = 1.0
+
+[node name="AmmoPickup" parent="Level/Reference" instance=ExtResource("9_obcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.2027, 0, 95.1631)
+is_respawnable = true
+respawn_time = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("12_g4wwp")]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_f4vyt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_15lav")
+max_value = 30.0
+value = 3.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SpaceControl" type="Control" parent="CanvasLayer/HUD/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 80
+text = "3"
+horizontal_alignment = 1
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "10
+"
+horizontal_alignment = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://character/character.tscn", "res://weapons/bullet_hole_decal.tscn")
+spawn_path = NodePath("..")
+
+[node name="ServerCam" type="Camera3D" parent="."]
+transform = Transform3D(0.121939, 0, 0.992538, 0, 1, 0, -0.992538, 0, 0.121939, 27.2046, 0, 0)
+current = true
+
+[node name="DeathArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -680.777, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea3D"]
+shape = SubResource("BoxShape3D_f0egn")
+
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
+[connection signal="body_entered" from="DeathArea3D" to="." method="_on_death_area_3d_body_entered"]
