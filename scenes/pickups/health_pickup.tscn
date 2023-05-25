@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn6wmmhqlnrsb"]
+
+[ext_resource type="PackedScene" uid="uid://cv13yp6kp1jwy" path="res://scenes/pickups/pickup.tscn" id="1_x7i5i"]
+[ext_resource type="Script" path="res://scenes/pickups/health_pickup.gd" id="2_lcvqi"]
+
+[node name="HealthPickup" instance=ExtResource("1_x7i5i")]
+script = ExtResource("2_lcvqi")
+HEAL_VALUE = 5

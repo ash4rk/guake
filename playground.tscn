@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://hcfwkhghoe0"]
+[gd_scene load_steps=17 format=3 uid="uid://hcfwkhghoe0"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_fxj0f"]
 [ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_myorv"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dur35ccvrr4ju" path="res://scenes/env_scenes/jumper.tscn" id="8_fjino"]
 [ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="8_wwgdg"]
 [ext_resource type="PackedScene" uid="uid://b7aoa8aail2r3" path="res://scenes/env_scenes/teleport.tscn" id="9_lakdj"]
+[ext_resource type="PackedScene" uid="uid://dn6wmmhqlnrsb" path="res://scenes/pickups/health_pickup.tscn" id="10_158eu"]
 
 [sub_resource type="Environment" id="Environment_qyvd4"]
 background_mode = 2
@@ -146,6 +147,11 @@ exit_point = NodePath("Exit")
 [node name="Exit" type="Node3D" parent="Level/Teleport"]
 transform = Transform3D(-0.214411, 0, 0.976743, 0, 1, 0, -0.976743, 0, -0.214411, -5.5079, 4.90563, -3.26056)
 
+[node name="HealthPickup" parent="." instance=ExtResource("10_158eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7982, -1.77188, 0)
+is_respawnable = true
+respawn_time = 1.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("8_wwgdg")]
@@ -172,7 +178,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_f4vyt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_15lav")
-max_value = 3.0
+max_value = 30.0
 value = 3.0
 show_percentage = false
 

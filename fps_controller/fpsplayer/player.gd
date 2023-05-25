@@ -5,6 +5,7 @@ class_name Player
 signal health_changed(health_value)
 signal ammo_changed(ammo_value)
 
+# Movement
 const GRAVITY = -24.8
 const MAX_SPEED = 20
 const JUMP_SPEED = 10
@@ -12,6 +13,9 @@ const ACCEL = 4.5
 const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 40
 const MOUSE_SENSITIVITY = 0.05
+
+# Stats
+const MAX_HEALTH: int = 30
 
 # Movement
 var input_dir = Vector3()
@@ -127,4 +131,10 @@ func receive_damage():
 	if health <= 0:
 		health = 3
 		position = Vector3.ZERO
+	health_changed.emit(health)
+
+@rpc("any_peer")
+func heal(value: int):
+	var new_health = min(MAX_HEALTH, value + health)
+	health = new_health
 	health_changed.emit(health)
