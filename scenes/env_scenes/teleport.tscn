@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7aoa8aail2r3"]
+
+[ext_resource type="Script" path="res://scenes/env_scenes/teleport.gd" id="1_37huh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_al476"]
+height = 2.646
+
+[node name="Teleport" type="Node3D"]
+script = ExtResource("1_37huh")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1.45, 0, 1, -6.33815e-08, 0, 1.50735, 0)
+inner_radius = 0.9
+outer_radius = 1.045
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50144, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_al476")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
