@@ -145,16 +145,50 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
-offset_bottom = 47.0
+anchor_bottom = 1.0
+offset_top = -1.0
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_f4vyt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_15lav")
 max_value = 3.0
 value = 3.0
 show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SpaceControl" type="Control" parent="CanvasLayer/HUD/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 80
+text = "3"
+horizontal_alignment = 1
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "10
+"
+horizontal_alignment = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://character/character.tscn", "res://weapons/bullet_hole_decal.tscn")

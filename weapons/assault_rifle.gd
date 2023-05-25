@@ -28,6 +28,7 @@ func fire(_delta):
 
 	if not is_reloading:
 		can_fire = true
+	super(_delta)
 
 @rpc("call_local")
 func _place_decal(point: Vector3):

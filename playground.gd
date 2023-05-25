@@ -1,6 +1,8 @@
 extends Node
 
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
+@onready var health_label = $CanvasLayer/HUD/HBoxContainer/HealthLabel
+@onready var ammo_label = $CanvasLayer/HUD/HBoxContainer/AmmoLabel
 
 const Player = preload("res://character/character.tscn")
 const PORT = 4242
@@ -28,22 +30,23 @@ func add_player(peer_id):
 	var player = Player.instantiate()
 	player.name = str(peer_id)
 	add_child(player)
-#	player.position = $PlayerSpawner.position
-	if player.is_multiplayer_authority():
-		player.health_changed.connect(update_health_bar)
 
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
 	if player:
 		player.queue_free()
 
-func update_health_bar(health_value):
+func update_health_ui(health_value):
 	health_bar.value = health_value
+	health_label.text = str(health_value)
+
+func update_ammo_ui(ammo_value):
+	ammo_label.text = str(ammo_value)
 
 func _on_multiplayer_spawner_spawned(node):
 	if node.is_multiplayer_authority():
-		node.health_changed.connect(update_health_bar)
-	pass
+		node.health_changed.connect(update_health_ui)
+		node.ammo_changed.connect(update_ammo_ui)
 
 func _on_death_area_3d_body_entered(body):
 	body.position = Vector3.ZERO

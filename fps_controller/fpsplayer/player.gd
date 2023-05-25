@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
+class_name Player
+
 signal health_changed(health_value)
+signal ammo_changed(ammo_value)
 
 const GRAVITY = -24.8
 const MAX_SPEED = 20

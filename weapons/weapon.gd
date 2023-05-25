@@ -13,6 +13,7 @@ class_name Weapon
 @export var shotgun : bool
 @export var ray_cast: RayCast3D
 @export var anim_player: AnimationPlayer
+@export var player: Player
 
 var vertical_recoil : int = 0
 var can_fire = true
@@ -22,12 +23,12 @@ func _ready():
 	randomize()
 
 func fire(_delta):
-	pass
+	player.emit_signal("ammo_changed", ammo)
 
 func reload():
 	is_reloading = true
 	can_fire = false
-	$AnimationPlayer.play("reload")
+#	$AnimationPlayer.play("reload")
 	await get_tree().create_timer(reload_time).timeout
 	if is_reloading == true:
 		var ammo_to_add = min(max_ammo - ammo, spare_ammo)
@@ -36,4 +37,5 @@ func reload():
 	if ammo > 0:
 		can_fire = true
 	is_reloading = false
+	player.emit_signal("ammo_changed", ammo)
 
