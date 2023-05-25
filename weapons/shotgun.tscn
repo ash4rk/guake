@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://p3tku27y1urv"]
+
+[ext_resource type="PackedScene" uid="uid://44bbjalsjiv" path="res://assets/double_barrel.glb" id="1_i58aq"]
+[ext_resource type="Texture2D" uid="uid://bhkxcf1jlhy4p" path="res://assets/double_barrel.png" id="2_r6k1s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k88pw"]
+albedo_texture = ExtResource("2_r6k1s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdhgh"]
+albedo_texture = ExtResource("2_r6k1s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7twaq"]
+albedo_texture = ExtResource("2_r6k1s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4tln"]
+albedo_texture = ExtResource("2_r6k1s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyh1b"]
+albedo_texture = ExtResource("2_r6k1s")
+
+[node name="Shotgun" instance=ExtResource("1_i58aq")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Base" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_k88pw")
+
+[node name="Barrel" parent="Base" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xdhgh")
+
+[node name="Shell_Left" parent="Base/Barrel" index="0"]
+transform = Transform3D(0.203254, 0.0227111, 0.0572306, -0.0879281, -0.0164576, 0.128164, 0.0521528, -0.116258, -0.00696299, -0.460306, 0.000513315, 4.04247)
+surface_material_override/0 = SubResource("StandardMaterial3D_7twaq")
+
+[node name="Shell_Right" parent="Base/Barrel" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q4tln")
+
+[node name="Trigger" parent="Base" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_eyh1b")
