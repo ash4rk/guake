@@ -1,0 +1,46 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://cu7v3blwqvaos"]
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_4h0bi"]
+default_input_values = [2, false, 3, 3.0]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_wijah"]
+parameter_name = "Gradient"
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6261h"]
+source = 5
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform sampler2D Gradient : repeat_disable;
+
+
+
+void fragment() {
+// Fresnel:2
+	float n_in2p3 = 3.00000;
+	float n_out2p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in2p3);
+
+
+	vec4 n_out4p0;
+// Texture2D:4
+	n_out4p0 = texture(Gradient, vec2(n_out2p0));
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-445.587, -42.4546)
+flags/unshaded = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeFresnel_4h0bi")
+nodes/fragment/2/position = Vector2(-320, 420)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_wijah")
+nodes/fragment/3/position = Vector2(-460, 120)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_6261h")
+nodes/fragment/4/position = Vector2(80, 160)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 2, 0, 4, 0, 4, 0, 0, 0)

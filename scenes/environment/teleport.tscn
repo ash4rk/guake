@@ -1,22 +1,80 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7aoa8aail2r3"]
+[gd_scene load_steps=11 format=3 uid="uid://b7aoa8aail2r3"]
 
 [ext_resource type="Script" path="res://scenes/environment/teleport.gd" id="1_37huh"]
+[ext_resource type="Shader" uid="uid://cu7v3blwqvaos" path="res://scenes/environment/teleport.tres" id="2_v82bv"]
+
+[sub_resource type="Gradient" id="Gradient_sryjn"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.124088, 0.164234, 0.558394, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1.13107e-06, 0.280663, 0.36279, 1, 0.11302, 0.842365, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_buqwa"]
+gradient = SubResource("Gradient_sryjn")
+use_hdr = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_favvp"]
+render_priority = 0
+shader = ExtResource("2_v82bv")
+shader_parameter/Gradient = SubResource("GradientTexture1D_buqwa")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_al476"]
 height = 2.646
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_be8jd"]
+render_priority = 0
+shader = ExtResource("2_v82bv")
+shader_parameter/Gradient = SubResource("GradientTexture1D_buqwa")
+
+[sub_resource type="SphereMesh" id="SphereMesh_qjqd3"]
+height = 2.0
+
+[sub_resource type="Animation" id="Animation_di0rr"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGTorus3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, -0.5),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 0, 6.28319)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iw6r2"]
+_data = {
+"idle": SubResource("Animation_di0rr")
+}
 
 [node name="Teleport" type="Node3D"]
 script = ExtResource("1_37huh")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1.45, 0, 1, -6.33815e-08, 0, 1.50735, 0)
+transform = Transform3D(0.804122, -0.594465, 0, -2.59849e-08, -3.51493e-08, -1.45, 0.594465, 0.804122, -6.33815e-08, 0, 1.50735, 0)
+material_override = SubResource("ShaderMaterial_favvp")
 inner_radius = 0.9
 outer_radius = 1.045
+ring_sides = 3
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50144, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_al476")
+
+[node name="CenterMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51111, 0)
+material_override = SubResource("ShaderMaterial_be8jd")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_qjqd3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_iw6r2")
+}
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
