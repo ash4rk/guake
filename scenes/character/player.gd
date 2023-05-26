@@ -4,6 +4,7 @@ class_name Player
 
 signal health_changed(health_value)
 signal ammo_changed(ammo_value)
+signal player_teleported()
 
 # Movement
 const GRAVITY = -24.8
