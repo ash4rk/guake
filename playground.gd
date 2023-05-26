@@ -63,7 +63,7 @@ func _on_multiplayer_spawner_spawned(node):
 		node.player_teleported.connect(_on_player_teleported)
 
 func _on_death_area_3d_body_entered(body):
-	body.position = Vector3.ZERO
+	body.kill()
 	$DeathArea3D/FallAudioStreamPlayer.play()
 
 func _on_player_teleported():

@@ -158,18 +158,22 @@ func _revive():
 	weapon_holder.show()
 	heal(MAX_HEALTH)
 	$FullPlayerShape.rotation = Vector3.ZERO
+	$ReviveAudioStreamPlayer3D.play()
 
 @rpc("any_peer")
-func receive_damage(from: Vector3 = Vector3.ZERO):
+func receive_damage(damage_value: int = 1, from: Vector3 = Vector3.ZERO):
 	if is_dead: return
 	
-	health -= 1
+	health -= damage_value
 	health_changed.emit(health)
 	if health <= 0:
 		_handle_death(from)
 		await get_tree().create_timer(6.0).timeout
 		_revive()
 
+func kill():
+	receive_damage(health)
+	
 
 @rpc("any_peer")
 func heal(value: int):
