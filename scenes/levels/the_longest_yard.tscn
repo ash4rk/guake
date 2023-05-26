@@ -216,7 +216,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0egn"]
-size = Vector3(390.957, 1222.22, 529.805)
+size = Vector3(2000, 1200, 2000)
 
 [node name="World" type="Node"]
 script = ExtResource("1_d23cl")
