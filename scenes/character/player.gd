@@ -26,6 +26,8 @@ var input_dir = Vector3()
 var jumper_velocity: = Vector3.ZERO
 # Stats
 @onready var weapon_holder: WeaponHolder = $RotationHelper/PlayerEyes/WeaponHolder
+@onready var ray_cast: RayCast3D = $RotationHelper/PlayerEyes/RayCast3D
+@onready var crosshair: ColorRect = $CanvasLayer/Crosshair
 var health = 3
 
 func _enter_tree():
@@ -45,6 +47,7 @@ func _physics_process(delta):
 	_process_input(delta)
 	_process_movement(delta)
 	_process_animation()
+	_process_hud()
 
 func _process_input(_delta):
 	# ----------------------------------
@@ -120,6 +123,17 @@ func _process_animation():
 	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector3.ZERO and !is_dead)
 	$AnimationTree.set("parameters/conditions/walk", input_dir != Vector3.ZERO and !is_dead)
 
+func _process_hud():
+	var cursor_object = ray_cast.get_collider()
+	if cursor_object == null:
+		crosshair.material.set("shader_parameter/color_id", 0)
+	elif cursor_object.is_in_group("players"):
+		crosshair.material.set("shader_parameter/color_id", 1)
+	else:
+		crosshair.material.set("shader_parameter/color_id", 0)
+	
+	crosshair.material.set("shader_parameter/spread", velocity.length()/20 + 1)
+
 func _input(event):
 	if not is_multiplayer_authority(): return
 		
@@ -174,3 +188,4 @@ func gain_ammo(weapon_id : int, value):
 		WeaponHolder.WEAPONS.SHOTGUN:
 			weapon_holder.shotgun.ammo += value
 			ammo_changed.emit(weapon_holder.shotgun.ammo)
+

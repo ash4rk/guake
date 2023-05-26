@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://m6ree13hxwj"]
+
+[ext_resource type="Shader" path="res://assets/crosshair.gdshader" id="1_l1qmn"]
+
+[resource]
+shader = ExtResource("1_l1qmn")
+shader_parameter/center_enabled = true
+shader_parameter/legs_enabled = true
+shader_parameter/inverted = false
+shader_parameter/color_id = 0
+shader_parameter/color_0 = Color(0, 1, 0, 1)
+shader_parameter/color_1 = Color(1, 0, 0, 1)
+shader_parameter/color_2 = Color(0, 0, 1, 1)
+shader_parameter/center_radius = 0.003
+shader_parameter/width = 0.003
+shader_parameter/len = 0.02
+shader_parameter/spacing = 0.008
+shader_parameter/spread = 1.0
