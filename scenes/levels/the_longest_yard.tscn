@@ -17,9 +17,12 @@
 background_mode = 2
 background_color = Color(0.647059, 0.909804, 0.917647, 1)
 sky = ExtResource("2_epyt7")
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.25
+ambient_light_color = Color(0.85098, 0.678431, 1, 1)
+ambient_light_sky_contribution = 0.79
 fog_light_energy = 0.05
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0068
+volumetric_fog_albedo = Color(1, 0.431373, 1, 1)
 adjustment_contrast = 0.85
 adjustment_saturation = 0.66
 
@@ -36,8 +39,8 @@ size = Vector3(390.957, 1222.22, 529.805)
 script = ExtResource("1_d23cl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.892271, -0.274443, 0.358516, 2.02684e-08, 0.794054, 0.607847, -0.451501, 0.542364, -0.708511, 0, 2.76815, 9.26053)
-visible = false
+transform = Transform3D(0.568257, -0.499272, 0.654073, 0.000216422, 0.794977, 0.60664, -0.822851, -0.344586, 0.451859, 0, 2.76815, 9.26053)
+light_energy = 0.734
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -474,6 +477,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -680.777, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea3D"]
 shape = SubResource("BoxShape3D_f0egn")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.98212, 0)
+visible = false
+size = Vector3(20.4045, 24.2925, 52.6147)
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
 [connection signal="body_entered" from="DeathArea3D" to="." method="_on_death_area_3d_body_entered"]

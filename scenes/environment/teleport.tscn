@@ -77,4 +77,9 @@ libraries = {
 "": SubResource("AnimationLibrary_iw6r2")
 }
 
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75265, 0)
+light_color = Color(0.576471, 0.607843, 1, 1)
+light_energy = 0.848
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
