@@ -53,7 +53,7 @@ _data = {
 script = ExtResource("1_37huh")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="."]
-transform = Transform3D(0.804122, -0.594465, 0, -2.59849e-08, -3.51493e-08, -1.45, 0.594465, 0.804122, -6.33815e-08, 0, 1.50735, 0)
+transform = Transform3D(0.484241, 0.874935, 0, 3.82446e-08, -2.11668e-08, -1.45, -0.874935, 0.484241, -6.33815e-08, 0, 1.50735, 0)
 material_override = SubResource("ShaderMaterial_favvp")
 inner_radius = 0.9
 outer_radius = 1.045

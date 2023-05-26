@@ -1,15 +1,71 @@
-[gd_scene load_steps=3 format=3 uid="uid://dur35ccvrr4ju"]
+[gd_scene load_steps=15 format=3 uid="uid://dur35ccvrr4ju"]
 
 [ext_resource type="Script" path="res://scenes/environment/jumper.gd" id="1_m3s5t"]
+[ext_resource type="Texture2D" uid="uid://bvnphc5cjlqil" path="res://assets/outer_jumper.png" id="2_p5jaj"]
+[ext_resource type="Texture2D" uid="uid://b5pdaiktxkupc" path="res://assets/star_04.png" id="3_ul5ny"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lyvsp"]
 height = 0.065
-radius = 0.823
+radius = 1.38366
+
+[sub_resource type="Curve" id="Curve_ei0v1"]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_v8xh3"]
+curve = SubResource("Curve_ei0v1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t622k"]
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_v8xh3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsiq5"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("2_p5jaj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ht1gl"]
+material = SubResource("StandardMaterial3D_wsiq5")
+
+[sub_resource type="Curve" id="Curve_u1j7x"]
+_data = [Vector2(0, 0.0181818), 0.0, 0.0, 0, 0, Vector2(0.259212, 1), 0.0, 0.0, 0, 0, Vector2(0.834816, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rj8qk"]
+curve = SubResource("Curve_u1j7x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nqa73"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.554, 1)
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_rj8qk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tstu"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.313726, 1, 1, 1)
+albedo_texture = ExtResource("3_ul5ny")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ilivv"]
+material = SubResource("StandardMaterial3D_6tstu")
+size = Vector2(0.4, 0.4)
 
 [node name="Jumper" type="Node3D"]
 script = ExtResource("1_m3s5t")
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+visible = false
 inner_radius = 0.9
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -17,5 +73,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00867099, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_lyvsp")
+
+[node name="Rings" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+amount = 3
+lifetime = 2.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_t622k")
+draw_pass_1 = SubResource("QuadMesh_ht1gl")
+
+[node name="Stars" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.450012, 0)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_nqa73")
+draw_pass_1 = SubResource("QuadMesh_ilivv")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
