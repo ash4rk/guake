@@ -40,6 +40,8 @@ func remove_player(peer_id):
 func update_health_ui(health_value):
 	if int(health_label.text) > health_value:
 		hud_anim_player.play("blood_on_screen")
+	else:
+		hud_anim_player.play("green_tint_flash")
 	
 	if health_value <= 0:
 		hud_anim_player.stop()
@@ -49,6 +51,9 @@ func update_health_ui(health_value):
 	health_label.text = str(health_value)
 
 func update_ammo_ui(ammo_value):
+	if int(ammo_label.text) < ammo_value:
+		hud_anim_player.play("yellow_tint_flash")
+		
 	ammo_label.text = str(ammo_value)
 
 func _on_multiplayer_spawner_spawned(node):
