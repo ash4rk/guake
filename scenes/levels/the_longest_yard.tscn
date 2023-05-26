@@ -529,12 +529,86 @@ transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.371
 [node name="HealthPickup" parent="Level" instance=ExtResource("11_k2i1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2013, 14.6077, 0.0278214)
 is_respawnable = true
-respawn_time = 1.0
+respawn_time = 60.0
 
-[node name="AmmoPickup" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.63399, 15.2478, -42.6898)
+[node name="HealthPickup2" parent="Level" instance=ExtResource("11_k2i1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09158, 54.3422, 0.0278214)
 is_respawnable = true
-respawn_time = 5.0
+respawn_time = 60.0
+
+[node name="SmallAmmoPickup" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, 43.9899)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup2" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, 43.9899)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup3" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, 43.9899)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup4" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, -41.2754)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup5" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, -41.2754)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup6" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, -41.2754)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup7" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 1.00554, -41.2754)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup8" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 1.00554, 41.141)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup9" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.6051, 1.00554, 41.141)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup10" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.6051, 1.00554, -40.8019)
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="AmmoPickup2" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20089, 58.9749, -0.033645)
+AMMO_VALUE = 30
+is_respawnable = true
+respawn_time = 60.0
+
+[node name="AmmoPickup3" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.691, 1.13897, -0.0334405)
+AMMO_VALUE = 30
+is_respawnable = true
+respawn_time = 60.0
+
+[node name="HealthPickup11" parent="Level" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9897, 0.211734, 40.9984)
+
+[node name="HealthPickup12" parent="Level" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75935, 0.211734, 40.9984)
+
+[node name="HealthPickup13" parent="Level" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2256, 0.211734, -40.8453)
+
+[node name="HealthPickup14" parent="Level" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75935, 0.211734, -41.0492)
 
 [node name="HealthRainbow" type="Node3D" parent="Level"]
 
@@ -675,3 +749,4 @@ bus = &"SFX"
 [connection signal="body_entered" from="DeathArea3D" to="." method="_on_death_area_3d_body_entered"]
 
 [editable path="Level/HealthPickup"]
+[editable path="Level/HealthPickup2"]

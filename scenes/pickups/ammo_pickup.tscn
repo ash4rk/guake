@@ -1,14 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://deihxnfqvnafk"]
+[gd_scene load_steps=8 format=3 uid="uid://deihxnfqvnafk"]
 
 [ext_resource type="PackedScene" uid="uid://cv13yp6kp1jwy" path="res://scenes/pickups/pickup.tscn" id="1_2kack"]
 [ext_resource type="Script" path="res://scenes/pickups/ammo_pickup.gd" id="2_cc6s4"]
 [ext_resource type="AudioStream" uid="uid://cyktcwsx3vn0b" path="res://assets/sfx/pickup_sound_2.wav" id="3_fpfsw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xvau"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.972549, 0.827451, 0, 1)
+
+[sub_resource type="Animation" id="Animation_jkl0o"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u1jwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhnm3"]
+_data = {
+"RESET": SubResource("Animation_u1jwq"),
+"spin": SubResource("Animation_jkl0o")
+}
 
 [node name="AmmoPickup" instance=ExtResource("1_2kack")]
 script = ExtResource("2_cc6s4")
 AMMO_VALUE = 5
 WEAPON_ID = 1
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="CSGBox3D" parent="." index="1"]
+visible = false
+
+[node name="HealthPickupMesh" type="CSGBox3D" parent="." index="3"]
+transform = Transform3D(0.527669, 0, 0.84945, 0, 1, 0, -0.84945, 0, 0.527669, 0, 0.763835, 0)
+material_override = SubResource("StandardMaterial3D_1xvau")
+size = Vector3(0.8, 0.8, 0.8)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]
 stream = ExtResource("3_fpfsw")
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_lhnm3")
+}
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.23829, 0)
+light_color = Color(0.972549, 0.827451, 0, 1)
+light_energy = 2.0
+spot_range = 2.0
