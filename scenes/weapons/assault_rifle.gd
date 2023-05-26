@@ -59,3 +59,4 @@ func play_shoot_effects():
 	$MuzzleFlash.restart()
 	$MuzzleFlash.emitting = true
 	$AudioStreamPlayer3D.play()
+	$AnimationPlayer.play("light_flash")

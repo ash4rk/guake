@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dblp3hl7wuwpm"]
+[gd_scene load_steps=16 format=3 uid="uid://dblp3hl7wuwpm"]
 
 [ext_resource type="PackedScene" uid="uid://cnt6k8biph7na" path="res://assets/m4a1.glb" id="1_4ducw"]
 [ext_resource type="Script" path="res://scenes/weapons/assault_rifle.gd" id="2_p1gw1"]
@@ -27,10 +27,12 @@ angle_max = 45.0
 color_ramp = SubResource("GradientTexture1D_5yw4n")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuuoe"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 0.690196, 1)
+albedo_color = Color(0.960784, 0.960784, 0, 1)
 albedo_texture = ExtResource("3_g4amt")
 billboard_mode = 3
 particles_anim_h_frames = 1
@@ -39,8 +41,29 @@ particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lpx2p"]
 material = SubResource("StandardMaterial3D_yuuoe")
-size = Vector2(0.5, 0.5)
+size = Vector2(1.5, 1.5)
 orientation = 2
+
+[sub_resource type="Animation" id="Animation_4qtr8"]
+resource_name = "light_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tprh3"]
+_data = {
+"light_flash": SubResource("Animation_4qtr8")
+}
 
 [node name="AssaultRifle" instance=ExtResource("1_4ducw")]
 script = ExtResource("2_p1gw1")
@@ -70,12 +93,22 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5ekvc")
 draw_pass_1 = SubResource("PlaneMesh_lpx2p")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133428, -0.641188)
+visible = false
+light_color = Color(1, 1, 0, 1)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("5_t0256")
 max_db = 0.0
 bus = &"SFX"
 
-[node name="OnHitAudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+[node name="OnHitAudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("6_j3l0b")
 volume_db = 5.0
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_tprh3")
+}
