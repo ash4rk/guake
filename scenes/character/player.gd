@@ -17,6 +17,7 @@ const MOUSE_SENSITIVITY = 0.05
 
 # Stats
 const MAX_HEALTH: int = 30
+var is_dead: bool = false
 
 # Movement
 var input_dir = Vector3()
@@ -86,6 +87,8 @@ func _process_input(_delta):
 	# ----------------------------------
 
 func _process_movement(delta):
+	if is_dead: return
+	
 	input_dir.y = 0
 	input_dir = input_dir.normalized()
 
@@ -129,11 +132,16 @@ func _input(event):
 
 @rpc("any_peer")
 func receive_damage():
+	if is_dead: return
+	
 	health -= 1
-	if health <= 0:
-		health = 3
-		position = Vector3.ZERO
 	health_changed.emit(health)
+	if health <= 0:
+		is_dead = true
+		await get_tree().create_timer(6.0).timeout
+		position = Vector3.ZERO
+		is_dead = false
+		heal(MAX_HEALTH)
 
 @rpc("any_peer")
 func heal(value: int):

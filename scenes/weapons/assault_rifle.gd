@@ -5,7 +5,8 @@ extends Weapon
 
 func _process(delta):
 	if not is_multiplayer_authority(): return
-		
+	if player.is_dead: return
+	
 	if is_reloading:
 		pass
 	if ammo <= 0 and !is_reloading:

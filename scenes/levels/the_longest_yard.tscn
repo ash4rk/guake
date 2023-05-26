@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bncaql8n6ykwg"]
+[gd_scene load_steps=22 format=3 uid="uid://bncaql8n6ykwg"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_d23cl"]
 [ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_epyt7"]
@@ -44,7 +44,7 @@ tracks/0/path = NodePath("BloodOverlay:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.196),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -56,7 +56,7 @@ tracks/1/path = NodePath("BloodOverlay:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.2),
+"times": PackedFloat32Array(0, 0.03, 0.196),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.52549), Color(1, 1, 1, 0)]
@@ -91,10 +91,39 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.113725, 1, 1, 0.843137), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_01urh"]
+resource_name = "red_tint_fill"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TintOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TintOverlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.4, 3.3, 4.9),
+"transitions": PackedFloat32Array(1, 1.62451, 1, 1, 0.707107),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.890196, 0, 0.117647, 0.490196), Color(1, 0.113725, 0.156863, 0.380392), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2bf8w"]
 _data = {
 "blood_on_screen": SubResource("Animation_k8fh1"),
-"blue_tint_flash": SubResource("Animation_8wmmu")
+"blue_tint_flash": SubResource("Animation_8wmmu"),
+"red_tint_fill": SubResource("Animation_01urh")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0egn"]
@@ -572,7 +601,6 @@ mouse_filter = 2
 texture = ExtResource("13_075ra")
 
 [node name="TintOverlay" type="ColorRect" parent="CanvasLayer/HUD"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -581,7 +609,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 1, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HUD"]
 libraries = {

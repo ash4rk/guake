@@ -41,6 +41,9 @@ func update_health_ui(health_value):
 	if int(health_label.text) > health_value:
 		hud_anim_player.play("blood_on_screen")
 	
+	if health_value <= 0:
+		hud_anim_player.play("red_tint_fill")
+	
 	health_bar.value = health_value
 	health_label.text = str(health_value)
 
