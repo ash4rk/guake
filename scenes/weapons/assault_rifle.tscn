@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dblp3hl7wuwpm"]
+[gd_scene load_steps=14 format=3 uid="uid://dblp3hl7wuwpm"]
 
 [ext_resource type="PackedScene" uid="uid://cnt6k8biph7na" path="res://assets/m4a1.glb" id="1_4ducw"]
 [ext_resource type="Script" path="res://scenes/weapons/assault_rifle.gd" id="2_p1gw1"]
 [ext_resource type="Texture2D" uid="uid://bwm3hbmygnqmu" path="res://assets/M4A1Diffuse.png" id="2_ty3ut"]
 [ext_resource type="Texture2D" uid="uid://b5pdaiktxkupc" path="res://assets/star_04.png" id="3_g4amt"]
+[ext_resource type="AudioStream" uid="uid://csm8ib1mxbldt" path="res://assets/sfx/m4a1_gun_sound.mp3" id="5_t0256"]
+[ext_resource type="AudioStream" uid="uid://dgyd6x4n6yk8w" path="res://assets/sfx/hurt_sound.wav" id="6_j3l0b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58vf2"]
 albedo_texture = ExtResource("2_ty3ut")
@@ -67,3 +69,13 @@ one_shot = true
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5ekvc")
 draw_pass_1 = SubResource("PlaneMesh_lpx2p")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource("5_t0256")
+max_db = 0.0
+bus = &"SFX"
+
+[node name="OnHitAudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("6_j3l0b")
+volume_db = 5.0
+bus = &"SFX"

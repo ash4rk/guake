@@ -24,7 +24,7 @@ func fire(_delta):
 		var hit_player = ray_cast.get_collider()
 		hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority(), self.global_position)
 		_play_blood_particles.rpc(ray_cast.get_collision_point())
-		
+		$OnHitAudioStreamPlayer.play()
 
 	await get_tree().create_timer(firerate).timeout
 	if ray_cast.is_colliding():
@@ -58,3 +58,4 @@ func play_shoot_effects():
 	anim_player.play("shoot")
 	$MuzzleFlash.restart()
 	$MuzzleFlash.emitting = true
+	$AudioStreamPlayer3D.play()

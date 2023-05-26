@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7aoa8aail2r3"]
+[gd_scene load_steps=12 format=3 uid="uid://b7aoa8aail2r3"]
 
 [ext_resource type="Script" path="res://scenes/environment/teleport.gd" id="1_37huh"]
 [ext_resource type="Shader" uid="uid://cu7v3blwqvaos" path="res://scenes/environment/teleport.tres" id="2_v82bv"]
+[ext_resource type="AudioStream" uid="uid://mnk2iesc5ym5" path="res://assets/sfx/teleport_sound.wav" id="3_vlgvc"]
 
 [sub_resource type="Gradient" id="Gradient_sryjn"]
 interpolation_mode = 2
@@ -81,5 +82,10 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75265, 0)
 light_color = Color(0.576471, 0.607843, 1, 1)
 light_energy = 0.848
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_vlgvc")
+volume_db = 5.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

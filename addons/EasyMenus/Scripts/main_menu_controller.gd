@@ -26,6 +26,8 @@ func close_options():
 
 func _on_start_game_button_pressed():
 	emit_signal("start_client", ip_address.text)
+	$MainMenuAudioStreamPlayer.stop()
+	$InGameMusicAudioStreamPlayer.play()
 	self.visible = false
 
 func _on_server_button_pressed():

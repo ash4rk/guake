@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://deihxnfqvnafk"]
+[gd_scene load_steps=4 format=3 uid="uid://deihxnfqvnafk"]
 
 [ext_resource type="PackedScene" uid="uid://cv13yp6kp1jwy" path="res://scenes/pickups/pickup.tscn" id="1_2kack"]
 [ext_resource type="Script" path="res://scenes/pickups/ammo_pickup.gd" id="2_cc6s4"]
+[ext_resource type="AudioStream" uid="uid://cyktcwsx3vn0b" path="res://assets/sfx/pickup_sound_2.wav" id="3_fpfsw"]
 
 [node name="AmmoPickup" instance=ExtResource("1_2kack")]
 script = ExtResource("2_cc6s4")
 AMMO_VALUE = 5
 WEAPON_ID = 1
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("3_fpfsw")
+bus = &"SFX"

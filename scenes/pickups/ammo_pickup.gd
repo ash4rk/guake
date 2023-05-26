@@ -5,3 +5,4 @@ extends Pickup
 
 func on_pickup(player: Player):
 	player.gain_ammo(WEAPON_ID, AMMO_VALUE)
+	$AudioStreamPlayer3D.play()

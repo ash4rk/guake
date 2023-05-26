@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq6tvhqcy2aps"]
+[gd_scene load_steps=5 format=3 uid="uid://dq6tvhqcy2aps"]
 
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/main_menu_controller.gd" id="1_lbw7r"]
 [ext_resource type="PackedScene" uid="uid://qlskttl1wjr7" path="res://addons/EasyMenus/Scenes/options_menu.tscn" id="2_pwqpr"]
+[ext_resource type="AudioStream" uid="uid://db6be20ukohh5" path="res://assets/music/main_menu_music.mp3" id="3_jqqpx"]
+[ext_resource type="AudioStream" uid="uid://c58b7kvbc87r" path="res://assets/music/level_ambient.mp3" id="4_otkwp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -90,6 +92,17 @@ text = "Start Server"
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="MainMenuAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jqqpx")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="InGameMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_otkwp")
+volume_db = -10.0
+bus = &"Music"
 
 [connection signal="pressed" from="Content/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="Content/OptionsButton" to="." method="open_options"]

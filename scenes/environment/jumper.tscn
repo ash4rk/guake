@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dur35ccvrr4ju"]
+[gd_scene load_steps=16 format=3 uid="uid://dur35ccvrr4ju"]
 
 [ext_resource type="Script" path="res://scenes/environment/jumper.gd" id="1_m3s5t"]
 [ext_resource type="Texture2D" uid="uid://bvnphc5cjlqil" path="res://assets/outer_jumper.png" id="2_p5jaj"]
 [ext_resource type="Texture2D" uid="uid://b5pdaiktxkupc" path="res://assets/star_04.png" id="3_ul5ny"]
+[ext_resource type="AudioStream" uid="uid://jv53lmhjmc1d" path="res://assets/sfx/jumper_sound.wav" id="4_jp2w6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lyvsp"]
 height = 0.065
@@ -92,5 +93,9 @@ draw_pass_1 = SubResource("QuadMesh_ilivv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75265, 0)
 light_color = Color(0, 0.698039, 1, 1)
 light_energy = 0.848
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_jp2w6")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

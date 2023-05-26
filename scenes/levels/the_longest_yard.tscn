@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bncaql8n6ykwg"]
+[gd_scene load_steps=26 format=3 uid="uid://bncaql8n6ykwg"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_d23cl"]
 [ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_epyt7"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dn6wmmhqlnrsb" path="res://scenes/pickups/health_pickup.tscn" id="11_k2i1m"]
 [ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="12_g4wwp"]
 [ext_resource type="Texture2D" uid="uid://d03lg7xrqm0ji" path="res://assets/blood_vignette.png" id="13_075ra"]
+[ext_resource type="AudioStream" uid="uid://dp375bvx4u7le" path="res://assets/sfx/fall_sound.wav" id="14_6mwj1"]
 
 [sub_resource type="Environment" id="Environment_qyvd4"]
 background_mode = 2
@@ -718,6 +719,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -680.777, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea3D"]
 shape = SubResource("BoxShape3D_f0egn")
+
+[node name="FallAudioStreamPlayer" type="AudioStreamPlayer" parent="DeathArea3D"]
+stream = ExtResource("14_6mwj1")
+bus = &"SFX"
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
 [connection signal="body_entered" from="DeathArea3D" to="." method="_on_death_area_3d_body_entered"]

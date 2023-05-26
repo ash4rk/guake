@@ -4,3 +4,4 @@ extends Pickup
 
 func on_pickup(player: Player):
 	player.heal(HEAL_VALUE)
+	$AudioStreamPlayer3D.play()

@@ -64,6 +64,7 @@ func _on_multiplayer_spawner_spawned(node):
 
 func _on_death_area_3d_body_entered(body):
 	body.position = Vector3.ZERO
+	$DeathArea3D/FallAudioStreamPlayer.play()
 
 func _on_player_teleported():
 	hud_anim_player.play("blue_tint_flash")

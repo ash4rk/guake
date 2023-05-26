@@ -150,6 +150,7 @@ func _handle_death(from_death):
 	jumper_velocity = -(from_death - global_position).normalized() * 150
 	weapon_holder.hide()
 	$FullPlayerShape.rotation.x = deg_to_rad(90)
+	$DeathAudioStreamPlayer.play()
 
 func _revive():
 	position = Vector3.ZERO

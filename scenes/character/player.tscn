@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ch5oisfcsw46e"]
+[gd_scene load_steps=47 format=3 uid="uid://ch5oisfcsw46e"]
 
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_8a3qu"]
 [ext_resource type="Texture2D" uid="uid://b28qt1sqto3v2" path="res://assets/anime_char_texture.png" id="2_2x7hy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bq4d8hf63wtds" path="res://scenes/weapons/sniper_rifle.tscn" id="7_0tm4d"]
 [ext_resource type="PackedScene" uid="uid://c2pvlrdkfls14" path="res://scenes/weapons/bazooka.tscn" id="8_dgcfi"]
 [ext_resource type="Texture2D" uid="uid://4ayb02wr16nn" path="res://assets/wip_sign.png" id="9_1g7dp"]
+[ext_resource type="AudioStream" uid="uid://724xa5v42cyn" path="res://assets/sfx/death_sound.wav" id="11_cvcy2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tadeg"]
 resource_name = "AnimeChar"
@@ -2227,28 +2228,28 @@ bones/17/name = "legIK.l"
 bones/17/parent = 0
 bones/17/rest = Transform3D(-0.999252, 0, 0.0386603, -0.0386603, 0, -0.999252, 0, -1, 0, 0.128412, 0.125094, -0.0927095)
 bones/17/enabled = true
-bones/17/position = Vector3(0.142227, 0.126374, 0.343376)
+bones/17/position = Vector3(0.142136, 0.126491, 0.345346)
 bones/17/rotation = Quaternion(0.0327174, 0.769197, -0.631397, 0.0927568)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "kneePole.l"
 bones/18/parent = 0
 bones/18/rest = Transform3D(-0.998481, 5.58793e-09, -0.0550946, -0.0550946, -2.38419e-07, 0.998481, -1.86265e-09, 1, 1.19209e-07, 0.0985763, 0.486968, 0.615828)
 bones/18/enabled = true
-bones/18/position = Vector3(0.171999, 0.505134, 0.596655)
+bones/18/position = Vector3(0.172171, 0.505177, 0.59661)
 bones/18/rotation = Quaternion(0.0194863, -0.706838, -0.706838, 0.0194863)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "legIK.r"
 bones/19/parent = 0
 bones/19/rest = Transform3D(-0.999252, 0, -0.0386603, 0.0386603, 0, -0.999252, 0, -1, 0, -0.128412, 0.125094, -0.0927095)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.164444, 0.287051, -0.0892782)
+bones/19/position = Vector3(-0.16562, 0.284529, -0.0914833)
 bones/19/rotation = Quaternion(0.0748651, 0.623749, -0.775504, 0.0626571)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "kneePole.r"
 bones/20/parent = 0
 bones/20/rest = Transform3D(-0.998481, -5.58793e-09, 0.0550946, 0.0550946, -2.38419e-07, 0.998481, 1.86265e-09, 1, 1.19209e-07, -0.0985763, 0.486968, 0.615828)
 bones/20/enabled = true
-bones/20/position = Vector3(-0.10055, 0.487456, 0.615313)
+bones/20/position = Vector3(-0.100377, 0.487413, 0.615358)
 bones/20/rotation = Quaternion(0.0194863, 0.706838, 0.706838, 0.0194863)
 bones/20/scale = Vector3(1, 1, 1)
 
@@ -2351,5 +2352,9 @@ grow_vertical = 2
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_lrkwm")
+
+[node name="DeathAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_cvcy2")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="RotationHelper/PlayerEyes/WeaponAnimationPlayer" to="RotationHelper/PlayerEyes/WeaponHolder" method="_on_weapon_animation_player_animation_finished"]
