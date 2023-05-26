@@ -116,8 +116,9 @@ func _process_movement(delta):
 	jumper_velocity = Vector3.ZERO
 
 func _process_animation():
-	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector3.ZERO)
-	$AnimationTree.set("parameters/conditions/walk", input_dir != Vector3.ZERO)
+	$AnimationTree.set("parameters/conditions/is_dead", is_dead)
+	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector3.ZERO and !is_dead)
+	$AnimationTree.set("parameters/conditions/walk", input_dir != Vector3.ZERO and !is_dead)
 
 func _input(event):
 	if not is_multiplayer_authority(): return
@@ -134,12 +135,14 @@ func _handle_death(from_death):
 	is_dead = true
 	jumper_velocity = -(from_death - global_position).normalized() * 150
 	weapon_holder.hide()
+	$FullPlayerShape.rotation.x = deg_to_rad(90)
 
 func _revive():
 	position = Vector3.ZERO
 	is_dead = false
 	weapon_holder.show()
 	heal(MAX_HEALTH)
+	$FullPlayerShape.rotation = Vector3.ZERO
 
 @rpc("any_peer")
 func receive_damage(from: Vector3 = Vector3.ZERO):
