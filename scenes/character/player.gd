@@ -16,7 +16,7 @@ const MAX_SLOPE_ANGLE = 40
 const MOUSE_SENSITIVITY = 0.05
 
 # Stats
-const MAX_HEALTH: int = 30
+const MAX_HEALTH: int = 100
 var is_dead: bool = false
 
 # Movement
@@ -28,7 +28,7 @@ var jumper_velocity: = Vector3.ZERO
 @onready var weapon_holder: WeaponHolder = $RotationHelper/PlayerEyes/WeaponHolder
 @onready var ray_cast: RayCast3D = $RotationHelper/PlayerEyes/RayCast3D
 @onready var crosshair: ColorRect = $CanvasLayer/Crosshair
-var health = 3
+var health = MAX_HEALTH
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
