@@ -3,6 +3,7 @@ extends Node
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 @onready var health_label = $CanvasLayer/HUD/HBoxContainer/HealthLabel
 @onready var ammo_label = $CanvasLayer/HUD/HBoxContainer/AmmoLabel
+@onready var hud_anim_player = $CanvasLayer/HUD/AnimationPlayer
 
 const Player = preload("res://scenes/character/player.tscn")
 const PORT = 4242
@@ -37,6 +38,9 @@ func remove_player(peer_id):
 		player.queue_free()
 
 func update_health_ui(health_value):
+	if int(health_label.text) > health_value:
+		hud_anim_player.play("blood_on_screen")
+	
 	health_bar.value = health_value
 	health_label.text = str(health_value)
 

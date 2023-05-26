@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bncaql8n6ykwg"]
+[gd_scene load_steps=20 format=3 uid="uid://bncaql8n6ykwg"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_d23cl"]
 [ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_epyt7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b7aoa8aail2r3" path="res://scenes/environment/teleport.tscn" id="10_t5wvh"]
 [ext_resource type="PackedScene" uid="uid://dn6wmmhqlnrsb" path="res://scenes/pickups/health_pickup.tscn" id="11_k2i1m"]
 [ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="12_g4wwp"]
+[ext_resource type="Texture2D" uid="uid://d03lg7xrqm0ji" path="res://assets/blood_vignette.png" id="13_075ra"]
 
 [sub_resource type="Environment" id="Environment_qyvd4"]
 background_mode = 2
@@ -31,6 +32,40 @@ bg_color = Color(0.913725, 0, 0.164706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15lav"]
 bg_color = Color(0, 0.756863, 0.329412, 1)
+
+[sub_resource type="Animation" id="Animation_k8fh1"]
+resource_name = "blood_on_screen"
+length = 0.2
+step = 0.002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BloodOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodOverlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.52549), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2bf8w"]
+_data = {
+"blood_on_screen": SubResource("Animation_k8fh1")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f0egn"]
 size = Vector3(390.957, 1222.22, 529.805)
@@ -440,7 +475,6 @@ material = ExtResource("7_pwfh5")
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("12_g4wwp")]
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -494,6 +528,22 @@ theme_override_font_sizes/font_size = 80
 text = "10
 "
 horizontal_alignment = 1
+
+[node name="BloodOverlay" type="TextureRect" parent="CanvasLayer/HUD"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_075ra")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_2bf8w")
+}
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/character/player.tscn")
