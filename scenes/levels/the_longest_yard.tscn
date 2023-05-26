@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bncaql8n6ykwg"]
+[gd_scene load_steps=27 format=3 uid="uid://bncaql8n6ykwg"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_d23cl"]
 [ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_epyt7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dur35ccvrr4ju" path="res://scenes/environment/jumper.tscn" id="8_f7di5"]
 [ext_resource type="PackedScene" uid="uid://deihxnfqvnafk" path="res://scenes/pickups/ammo_pickup.tscn" id="9_obcue"]
 [ext_resource type="PackedScene" uid="uid://b7aoa8aail2r3" path="res://scenes/environment/teleport.tscn" id="10_t5wvh"]
+[ext_resource type="PackedScene" uid="uid://cyl6gp1d18pw3" path="res://scenes/pickups/small_health_pickup.tscn" id="10_uybqr"]
 [ext_resource type="PackedScene" uid="uid://dn6wmmhqlnrsb" path="res://scenes/pickups/health_pickup.tscn" id="11_k2i1m"]
 [ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="12_g4wwp"]
 [ext_resource type="Texture2D" uid="uid://d03lg7xrqm0ji" path="res://assets/blood_vignette.png" id="13_075ra"]
@@ -535,6 +536,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.63399, 15.2478, -42.6898)
 is_respawnable = true
 respawn_time = 5.0
 
+[node name="HealthRainbow" type="Node3D" parent="Level"]
+
+[node name="HealthPickup2" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.402, 31, -22)
+
+[node name="HealthPickup3" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.402, 35, -16)
+
+[node name="HealthPickup4" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.529, 39, -11)
+
+[node name="HealthPickup9" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.529, 41.1037, 6)
+
+[node name="HealthPickup10" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 0.999936, -0.0113095, 0, 0.0113095, 0.999936, -23.529, 42, -6)
+
+[node name="HealthPickup5" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5291, 45.275, 0.263629)
+
+[node name="HealthPickup6" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.402, 31, 22)
+
+[node name="HealthPickup7" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.546, 34.1037, 16)
+
+[node name="HealthPickup8" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.546, 37.3403, 11)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("12_g4wwp")]
@@ -643,3 +673,5 @@ bus = &"SFX"
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
 [connection signal="body_entered" from="DeathArea3D" to="." method="_on_death_area_3d_body_entered"]
+
+[editable path="Level/HealthPickup"]

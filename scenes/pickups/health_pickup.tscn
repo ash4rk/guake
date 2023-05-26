@@ -1,13 +1,109 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn6wmmhqlnrsb"]
+[gd_scene load_steps=13 format=3 uid="uid://dn6wmmhqlnrsb"]
 
 [ext_resource type="PackedScene" uid="uid://cv13yp6kp1jwy" path="res://scenes/pickups/pickup.tscn" id="1_x7i5i"]
 [ext_resource type="Script" path="res://scenes/pickups/health_pickup.gd" id="2_lcvqi"]
 [ext_resource type="AudioStream" uid="uid://dgfqrk42oijbo" path="res://assets/sfx/pickup_sound.wav" id="3_j4d7h"]
+[ext_resource type="Texture2D" uid="uid://b5pdaiktxkupc" path="res://assets/star_04.png" id="4_fgp2v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s727x"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.223529, 1, 0.2, 1)
+
+[sub_resource type="Curve" id="Curve_lreg8"]
+_data = [Vector2(0, 0.0181818), 0.0, 0.0, 0, 0, Vector2(0.259212, 1), 0.0, 0.0, 0, 0, Vector2(0.834816, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rykq0"]
+curve = SubResource("Curve_lreg8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ibq35"]
+emission_shape = 3
+emission_box_extents = Vector3(0.75, 0.3, 0.75)
+gravity = Vector3(0, 1, 0)
+radial_accel_min = -3.83
+radial_accel_max = -2.73
+tangential_accel_min = 3.0
+tangential_accel_max = 3.0
+damping_min = 1.0
+damping_max = 1.0
+scale_curve = SubResource("CurveTexture_rykq0")
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7irm"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.223529, 1, 0, 1)
+albedo_texture = ExtResource("4_fgp2v")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_vlxi8"]
+material = SubResource("StandardMaterial3D_u7irm")
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="Animation" id="Animation_kosu8"]
+resource_name = "spin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthPickupMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 0.420448),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_irt07"]
+_data = {
+"spin": SubResource("Animation_kosu8")
+}
 
 [node name="HealthPickup" instance=ExtResource("1_x7i5i")]
 script = ExtResource("2_lcvqi")
-HEAL_VALUE = 5
+HEAL_VALUE = 50
+
+[node name="CSGBox3D" parent="." index="1"]
+visible = false
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("3_j4d7h")
 bus = &"SFX"
+
+[node name="HealthPickupMesh" type="CSGCylinder3D" parent="." index="4"]
+transform = Transform3D(-0.967004, 0, 0.254762, 0, 1, 0, -0.254762, 0, -0.967004, 0, 0.763835, 0)
+material_override = SubResource("StandardMaterial3D_s727x")
+radius = 0.2
+height = 1.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="HealthPickupMesh" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+radius = 0.2
+height = 1.0
+sides = 6
+
+[node name="Stars" type="GPUParticles3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741016, 0)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_ibq35")
+draw_pass_1 = SubResource("QuadMesh_vlxi8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_irt07")
+}
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.23829, 0)
+light_color = Color(0.223529, 1, 0.2, 1)
+light_energy = 2.0
+spot_range = 2.0
