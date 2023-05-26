@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq4d8hf63wtds"]
+
+[ext_resource type="PackedScene" uid="uid://d2xv1sxgwjow0" path="res://assets/HuntingRifle.fbx" id="1_fqbtq"]
+[ext_resource type="PackedScene" uid="uid://dtvqtbtlhdf5x" path="res://assets/Scope.fbx" id="2_cug7t"]
+
+[node name="SniperRifle" type="Node3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="HuntingRifle" parent="." instance=ExtResource("1_fqbtq")]
+
+[node name="Scope" parent="." instance=ExtResource("2_cug7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38042, -2.33104)

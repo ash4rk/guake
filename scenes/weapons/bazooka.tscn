@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2pvlrdkfls14"]
+
+[ext_resource type="PackedScene" uid="uid://cm5hyb880r3n7" path="res://assets/bazooka_1.glb" id="1_a6jwx"]
+[ext_resource type="Texture2D" uid="uid://dgusa5dhh1tpe" path="res://assets/bazooka.png" id="2_6p8p6"]
+[ext_resource type="PackedScene" uid="uid://bcfvbek5f7b0u" path="res://assets/bazooka_2.glb" id="3_jrp0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctfjl"]
+albedo_texture = ExtResource("2_6p8p6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q33vp"]
+albedo_texture = ExtResource("2_6p8p6")
+
+[node name="Bazooka" type="Node3D"]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+
+[node name="LeftPart" parent="." instance=ExtResource("1_a6jwx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Bazooka" parent="LeftPart" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ctfjl")
+
+[node name="RightPart" parent="." instance=ExtResource("3_jrp0n")]
+transform = Transform3D(-1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, 0, 8.74228e-08, 7.64274e-15, 1, 0, 0, 0)
+
+[node name="Cylinder" parent="RightPart" index="1"]
+material_override = SubResource("StandardMaterial3D_q33vp")
+
+[node name="Cube" parent="RightPart" index="2"]
+visible = false
+
+[editable path="LeftPart"]
+[editable path="RightPart"]

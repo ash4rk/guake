@@ -1,11 +1,14 @@
-[gd_scene load_steps=40 format=3 uid="uid://ch5oisfcsw46e"]
+[gd_scene load_steps=43 format=3 uid="uid://ch5oisfcsw46e"]
 
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_8a3qu"]
 [ext_resource type="Texture2D" uid="uid://b28qt1sqto3v2" path="res://assets/anime_char_texture.png" id="2_2x7hy"]
 [ext_resource type="Script" path="res://scenes/weapons/weapon_holder.gd" id="3_1c76r"]
 [ext_resource type="PackedScene" uid="uid://dblp3hl7wuwpm" path="res://scenes/weapons/assault_rifle.tscn" id="4_hl1ab"]
+[ext_resource type="PackedScene" uid="uid://cugtf6tc0ckrx" path="res://scenes/weapons/pistol.tscn" id="4_x8lwb"]
 [ext_resource type="PackedScene" uid="uid://p3tku27y1urv" path="res://scenes/weapons/shotgun.tscn" id="5_ar017"]
 [ext_resource type="Material" uid="uid://m6ree13hxwj" path="res://assets/crosshair_material.tres" id="6_daovb"]
+[ext_resource type="PackedScene" uid="uid://bq4d8hf63wtds" path="res://scenes/weapons/sniper_rifle.tscn" id="7_0tm4d"]
+[ext_resource type="PackedScene" uid="uid://c2pvlrdkfls14" path="res://scenes/weapons/bazooka.tscn" id="8_dgcfi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tadeg"]
 resource_name = "AnimeChar"
@@ -2218,28 +2221,28 @@ bones/17/name = "legIK.l"
 bones/17/parent = 0
 bones/17/rest = Transform3D(-0.999252, 0, 0.0386603, -0.0386603, 0, -0.999252, 0, -1, 0, 0.128412, 0.125094, -0.0927095)
 bones/17/enabled = true
-bones/17/position = Vector3(0.16871, 0.178362, -0.0510661)
+bones/17/position = Vector3(0.132546, 0.183358, 0.335348)
 bones/17/rotation = Quaternion(0.0327174, 0.769197, -0.631397, 0.0927568)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "kneePole.l"
 bones/18/parent = 0
 bones/18/rest = Transform3D(-0.998481, 5.58793e-09, -0.0550946, -0.0550946, -2.38419e-07, 0.998481, -1.86265e-09, 1, 1.19209e-07, 0.0985763, 0.486968, 0.615828)
 bones/18/enabled = true
-bones/18/position = Vector3(0.108418, 0.489403, 0.613258)
+bones/18/position = Vector3(0.170272, 0.504707, 0.597107)
 bones/18/rotation = Quaternion(0.0194863, -0.706838, -0.706838, 0.0194863)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "legIK.r"
 bones/19/parent = 0
 bones/19/rest = Transform3D(-0.999252, 0, -0.0386603, 0.0386603, 0, -0.999252, 0, -1, 0, -0.128412, 0.125094, -0.0927095)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.116002, 0.256933, 0.310916)
+bones/19/position = Vector3(-0.168888, 0.246484, -0.0795206)
 bones/19/rotation = Quaternion(0.0748651, 0.623749, -0.775504, 0.0626571)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "kneePole.r"
 bones/20/parent = 0
 bones/20/rest = Transform3D(-0.998481, -5.58793e-09, 0.0550946, 0.0550946, -2.38419e-07, 0.998481, 1.86265e-09, 1, 1.19209e-07, -0.0985763, 0.486968, 0.615828)
 bones/20/enabled = true
-bones/20/position = Vector3(-0.16413, 0.503187, 0.598711)
+bones/20/position = Vector3(-0.102276, 0.487883, 0.614862)
 bones/20/rotation = Quaternion(0.0194863, 0.706838, 0.706838, 0.0194863)
 bones/20/scale = Vector3(1, 1, 1)
 
@@ -2276,7 +2279,8 @@ transform = Transform3D(1, 0, 0, 0, 0.999967, -0.00809819, 0, 0.00809819, 0.9999
 script = ExtResource("3_1c76r")
 anim_player = NodePath("../WeaponAnimationPlayer")
 
-[node name="Pistol" type="Node3D" parent="RotationHelper/PlayerEyes/WeaponHolder"]
+[node name="Pistol" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_x8lwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077, -0.144, -0.297)
 visible = false
 
 [node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" node_paths=PackedStringArray("ray_cast", "anim_player", "player") instance=ExtResource("4_hl1ab")]
@@ -2287,6 +2291,14 @@ player = NodePath("../../../..")
 
 [node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_ar017")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.206, -0.183, -0.327)
+visible = false
+
+[node name="SniperRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("7_0tm4d")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.079, -0.129, -0.239)
+visible = false
+
+[node name="Bazooka" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("8_dgcfi")]
+transform = Transform3D(-3.49691e-09, 0, 0.08, 6.98492e-10, 0.08, 0, -0.08, 6.98492e-10, -3.49691e-09, 0.084, -0.13, -0.228)
 visible = false
 
 [node name="RayCast3D" type="RayCast3D" parent="RotationHelper/PlayerEyes"]

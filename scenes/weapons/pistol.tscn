@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cugtf6tc0ckrx"]
+
+[ext_resource type="PackedScene" uid="uid://bnpfaqd1rnhq0" path="res://assets/glock.glb" id="1_801kl"]
+
+[node name="Pistol" type="Node3D"]
+
+[node name="Glock" parent="." instance=ExtResource("1_801kl")]
+transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0, 0, 0)
