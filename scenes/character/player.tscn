@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ch5oisfcsw46e"]
+[gd_scene load_steps=46 format=3 uid="uid://ch5oisfcsw46e"]
 
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_8a3qu"]
 [ext_resource type="Texture2D" uid="uid://b28qt1sqto3v2" path="res://assets/anime_char_texture.png" id="2_2x7hy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://m6ree13hxwj" path="res://assets/crosshair_material.tres" id="6_daovb"]
 [ext_resource type="PackedScene" uid="uid://bq4d8hf63wtds" path="res://scenes/weapons/sniper_rifle.tscn" id="7_0tm4d"]
 [ext_resource type="PackedScene" uid="uid://c2pvlrdkfls14" path="res://scenes/weapons/bazooka.tscn" id="8_dgcfi"]
+[ext_resource type="Texture2D" uid="uid://4ayb02wr16nn" path="res://assets/wip_sign.png" id="9_1g7dp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tadeg"]
 resource_name = "AnimeChar"
@@ -1978,6 +1979,11 @@ graph_offset = Vector2(-93, -132)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_cw1od"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7hoi"]
+albedo_texture = ExtResource("9_1g7dp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_s55ed"]
+
 [sub_resource type="Animation" id="Animation_lomnk"]
 length = 0.001
 tracks/0/type = "value"
@@ -2221,28 +2227,28 @@ bones/17/name = "legIK.l"
 bones/17/parent = 0
 bones/17/rest = Transform3D(-0.999252, 0, 0.0386603, -0.0386603, 0, -0.999252, 0, -1, 0, 0.128412, 0.125094, -0.0927095)
 bones/17/enabled = true
-bones/17/position = Vector3(0.132546, 0.183358, 0.335348)
+bones/17/position = Vector3(0.142227, 0.126374, 0.343376)
 bones/17/rotation = Quaternion(0.0327174, 0.769197, -0.631397, 0.0927568)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "kneePole.l"
 bones/18/parent = 0
 bones/18/rest = Transform3D(-0.998481, 5.58793e-09, -0.0550946, -0.0550946, -2.38419e-07, 0.998481, -1.86265e-09, 1, 1.19209e-07, 0.0985763, 0.486968, 0.615828)
 bones/18/enabled = true
-bones/18/position = Vector3(0.170272, 0.504707, 0.597107)
+bones/18/position = Vector3(0.171999, 0.505134, 0.596655)
 bones/18/rotation = Quaternion(0.0194863, -0.706838, -0.706838, 0.0194863)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "legIK.r"
 bones/19/parent = 0
 bones/19/rest = Transform3D(-0.999252, 0, -0.0386603, 0.0386603, 0, -0.999252, 0, -1, 0, -0.128412, 0.125094, -0.0927095)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.168888, 0.246484, -0.0795206)
+bones/19/position = Vector3(-0.164444, 0.287051, -0.0892782)
 bones/19/rotation = Quaternion(0.0748651, 0.623749, -0.775504, 0.0626571)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "kneePole.r"
 bones/20/parent = 0
 bones/20/rest = Transform3D(-0.998481, -5.58793e-09, 0.0550946, 0.0550946, -2.38419e-07, 0.998481, 1.86265e-09, 1, 1.19209e-07, -0.0985763, 0.486968, 0.615828)
 bones/20/enabled = true
-bones/20/position = Vector3(-0.102276, 0.487883, 0.614862)
+bones/20/position = Vector3(-0.10055, 0.487456, 0.615313)
 bones/20/rotation = Quaternion(0.0194863, 0.706838, 0.706838, 0.0194863)
 bones/20/scale = Vector3(1, 1, 1)
 
@@ -2283,6 +2289,11 @@ anim_player = NodePath("../WeaponAnimationPlayer")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077, -0.144, -0.297)
 visible = false
 
+[node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Pistol"]
+transform = Transform3D(0.00353221, -0.00155617, -0.0408179, 0.0109804, 0.0394984, -0.000555658, 0.0393441, -0.0108838, 0.00381961, -0.0186482, 0.0407852, 0.0256923)
+material_override = SubResource("StandardMaterial3D_n7hoi")
+mesh = SubResource("QuadMesh_s55ed")
+
 [node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" node_paths=PackedStringArray("ray_cast", "anim_player", "player") instance=ExtResource("4_hl1ab")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0777168, -0.236788, -0.126612)
 ray_cast = NodePath("../../RayCast3D")
@@ -2293,13 +2304,28 @@ player = NodePath("../../../..")
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.206, -0.183, -0.327)
 visible = false
 
+[node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun"]
+transform = Transform3D(0.0758312, 0, -0.203968, 0, 0.208, 0, 0.379498, 0, 0.0407568, -0.108, 0.105, -0.217)
+material_override = SubResource("StandardMaterial3D_n7hoi")
+mesh = SubResource("QuadMesh_s55ed")
+
 [node name="SniperRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("7_0tm4d")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.079, -0.129, -0.239)
 visible = false
 
+[node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/SniperRifle"]
+transform = Transform3D(0.185757, 0, -0.481482, 0, 0.491, 0, 0.929623, 0, 0.0962096, -0.432, 0.603, -0.772)
+material_override = SubResource("StandardMaterial3D_n7hoi")
+mesh = SubResource("QuadMesh_s55ed")
+
 [node name="Bazooka" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("8_dgcfi")]
 transform = Transform3D(-3.49691e-09, 0, 0.08, 6.98492e-10, 0.08, 0, -0.08, 6.98492e-10, -3.49691e-09, 0.084, -0.13, -0.228)
 visible = false
+
+[node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Bazooka"]
+transform = Transform3D(-2.44874, -0.0970052, -0.24715, -0.177068, 1.33628, -0.0199198, 0.462334, -0.00200797, -1.31665, 1.007, 0.811, -0.102)
+material_override = SubResource("StandardMaterial3D_n7hoi")
+mesh = SubResource("QuadMesh_s55ed")
 
 [node name="RayCast3D" type="RayCast3D" parent="RotationHelper/PlayerEyes"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
