@@ -1,7 +1,7 @@
 extends Weapon
 
-@onready var DECAL_SCENE = preload("res://weapons/bullet_hole_decal.tscn")
-@onready var BLOOD_PARTICLES_SCENE = preload("res://scenes/blood_particles.tscn")
+@onready var DECAL_SCENE = preload("res://scenes/weapons/bullet_hole_decal.tscn")
+@onready var BLOOD_PARTICLES_SCENE = preload("res://scenes/particles/blood_particles.tscn")
 
 func _process(delta):
 	if not is_multiplayer_authority(): return

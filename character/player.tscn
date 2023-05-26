@@ -1,10 +1,10 @@
 [gd_scene load_steps=33 format=3 uid="uid://ch5oisfcsw46e"]
 
-[ext_resource type="Script" path="res://fps_controller/fpsplayer/player.gd" id="1_ln2nj"]
-[ext_resource type="Texture2D" uid="uid://b28qt1sqto3v2" path="res://assets/anime_char_texture.png" id="2_ehtdt"]
-[ext_resource type="Script" path="res://weapons/weapon_holder.gd" id="3_8f2yu"]
-[ext_resource type="PackedScene" uid="uid://dblp3hl7wuwpm" path="res://weapons/assault_rifle.tscn" id="4_taocb"]
-[ext_resource type="PackedScene" uid="uid://p3tku27y1urv" path="res://weapons/shotgun.tscn" id="5_prxmu"]
+[ext_resource type="Script" path="res://character/player.gd" id="1_gteom"]
+[ext_resource type="Texture2D" uid="uid://b28qt1sqto3v2" path="res://assets/anime_char_texture.png" id="2_ullil"]
+[ext_resource type="Script" path="res://weapons/weapon_holder.gd" id="3_qgon1"]
+[ext_resource type="PackedScene" uid="uid://dblp3hl7wuwpm" path="res://weapons/assault_rifle.tscn" id="4_6oj2x"]
+[ext_resource type="PackedScene" uid="uid://p3tku27y1urv" path="res://weapons/shotgun.tscn" id="5_gxe2b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tadeg"]
 resource_name = "AnimeChar"
@@ -98,7 +98,7 @@ bind/20/bone = -1
 bind/20/pose = Transform3D(-0.998481, 0.0550946, 0, -6.56779e-09, -1.19028e-07, 1, 0.0550946, 0.998481, 0, -0.125256, -0.615828, -0.480797)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txxdq"]
-albedo_texture = ExtResource("2_ehtdt")
+albedo_texture = ExtResource("2_ullil")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8lwpo"]
 
@@ -1907,7 +1907,7 @@ properties/3/spawn = true
 properties/3/sync = true
 
 [node name="Player" type="CharacterBody3D" groups=["players"]]
-script = ExtResource("1_ln2nj")
+script = ExtResource("1_gteom")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.06, 0)
@@ -2037,28 +2037,28 @@ bones/17/name = "legIK.l"
 bones/17/parent = 0
 bones/17/rest = Transform3D(-0.999252, 0, 0.0386603, -0.0386603, 0, -0.999252, 0, -1, 0, 0.128412, 0.125094, -0.0927095)
 bones/17/enabled = true
-bones/17/position = Vector3(0.144682, 0.123718, 0.293081)
+bones/17/position = Vector3(0.128865, 0.39152, -0.0184271)
 bones/17/rotation = Quaternion(0.0327174, 0.769197, -0.631397, 0.0927568)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "kneePole.l"
 bones/18/parent = 0
 bones/18/rest = Transform3D(-0.998481, 5.58793e-09, -0.0550946, -0.0550946, -2.38419e-07, 0.998481, -1.86265e-09, 1, 1.19209e-07, 0.0985763, 0.486968, 0.615828)
 bones/18/enabled = true
-bones/18/position = Vector3(0.165404, 0.503502, 0.598378)
+bones/18/position = Vector3(0.110422, 0.489899, 0.612735)
 bones/18/rotation = Quaternion(0.0194863, -0.706838, -0.706838, 0.0194863)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "legIK.r"
 bones/19/parent = 0
 bones/19/rest = Transform3D(-0.999252, 0, -0.0386603, 0.0386603, 0, -0.999252, 0, -1, 0, -0.128412, 0.125094, -0.0927095)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.137609, 0.344607, -0.03358)
+bones/19/position = Vector3(-0.150826, 0.120082, 0.279774)
 bones/19/rotation = Quaternion(0.0748651, 0.623749, -0.775504, 0.0626571)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "kneePole.r"
 bones/20/parent = 0
 bones/20/rest = Transform3D(-0.998481, -5.58793e-09, 0.0550946, 0.0550946, -2.38419e-07, 0.998481, 1.86265e-09, 1, 1.19209e-07, -0.0985763, 0.486968, 0.615828)
 bones/20/enabled = true
-bones/20/position = Vector3(-0.107145, 0.489088, 0.61359)
+bones/20/position = Vector3(-0.162126, 0.502692, 0.599234)
 bones/20/rotation = Quaternion(0.0194863, 0.706838, 0.706838, 0.0194863)
 bones/20/scale = Vector3(1, 1, 1)
 
@@ -2092,19 +2092,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0960009, 1.6089, -0.300534)
 
 [node name="WeaponHolder" type="Node3D" parent="RotationHelper/PlayerEyes" node_paths=PackedStringArray("anim_player")]
 transform = Transform3D(1, 0, 0, 0, 0.999967, -0.00809819, 0, 0.00809819, 0.999967, 0.00517711, 0.0232285, 0.112658)
-script = ExtResource("3_8f2yu")
+script = ExtResource("3_qgon1")
 anim_player = NodePath("../WeaponAnimationPlayer")
 
 [node name="Pistol" type="Node3D" parent="RotationHelper/PlayerEyes/WeaponHolder"]
 visible = false
 
-[node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" node_paths=PackedStringArray("ray_cast", "anim_player", "player") instance=ExtResource("4_taocb")]
+[node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" node_paths=PackedStringArray("ray_cast", "anim_player", "player") instance=ExtResource("4_6oj2x")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0777168, -0.236788, -0.126612)
+shotgun = null
 ray_cast = NodePath("../../RayCast3D")
 anim_player = NodePath("../../WeaponAnimationPlayer")
 player = NodePath("../../../..")
 
-[node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_prxmu")]
+[node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_gxe2b")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.206, -0.183, -0.327)
 visible = false
 
