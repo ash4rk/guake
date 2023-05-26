@@ -7,9 +7,9 @@
 [ext_resource type="Material" uid="uid://ddpgp1pyklffr" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreenGrid.material" id="5_j2lca"]
 [ext_resource type="Material" uid="uid://cpk3jtowelhgh" path="res://addons/ThirdPersonTemplate/Environments/Materials/PingkGrid.material" id="6_riwj5"]
 [ext_resource type="Material" uid="uid://bquocw2a8n271" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreyGrid.material" id="7_pwfh5"]
-[ext_resource type="PackedScene" uid="uid://dur35ccvrr4ju" path="res://scenes/env_scenes/jumper.tscn" id="8_f7di5"]
+[ext_resource type="PackedScene" uid="uid://dur35ccvrr4ju" path="res://scenes/environment/jumper.tscn" id="8_f7di5"]
 [ext_resource type="PackedScene" uid="uid://deihxnfqvnafk" path="res://scenes/pickups/ammo_pickup.tscn" id="9_obcue"]
-[ext_resource type="PackedScene" uid="uid://b7aoa8aail2r3" path="res://scenes/env_scenes/teleport.tscn" id="10_t5wvh"]
+[ext_resource type="PackedScene" uid="uid://b7aoa8aail2r3" path="res://scenes/environment/teleport.tscn" id="10_t5wvh"]
 [ext_resource type="PackedScene" uid="uid://dn6wmmhqlnrsb" path="res://scenes/pickups/health_pickup.tscn" id="11_k2i1m"]
 [ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="12_g4wwp"]
 
@@ -462,7 +462,7 @@ text = "10
 horizontal_alignment = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://character/character.tscn", "res://weapons/bullet_hole_decal.tscn")
+_spawnable_scenes = PackedStringArray("res://scenes/character/player.tscn")
 spawn_path = NodePath("..")
 
 [node name="ServerCam" type="Camera3D" parent="."]

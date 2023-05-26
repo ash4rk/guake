@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7aoa8aail2r3"]
 
-[ext_resource type="Script" path="res://scenes/env_scenes/teleport.gd" id="1_37huh"]
+[ext_resource type="Script" path="res://scenes/environment/teleport.gd" id="1_37huh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_al476"]
 height = 2.646

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dur35ccvrr4ju"]
 
-[ext_resource type="Script" path="res://scenes/env_scenes/jumper.gd" id="1_m3s5t"]
+[ext_resource type="Script" path="res://scenes/environment/jumper.gd" id="1_m3s5t"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lyvsp"]
 height = 0.065

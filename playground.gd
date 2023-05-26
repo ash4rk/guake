@@ -4,7 +4,7 @@ extends Node
 @onready var health_label = $CanvasLayer/HUD/HBoxContainer/HealthLabel
 @onready var ammo_label = $CanvasLayer/HUD/HBoxContainer/AmmoLabel
 
-const Player = preload("res://character/player.tscn")
+const Player = preload("res://scenes/character/player.tscn")
 const PORT = 4242
 var enet_peer = ENetMultiplayerPeer.new()
 
