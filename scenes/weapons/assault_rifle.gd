@@ -22,7 +22,7 @@ func fire(_delta):
 	ammo -= ammo_per_shot
 	if ray_cast.get_collider() != null and ray_cast.get_collider().is_in_group("players"):
 		var hit_player = ray_cast.get_collider()
-		hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
+		hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority(), self.global_position)
 		_play_blood_particles.rpc(ray_cast.get_collision_point())
 		
 

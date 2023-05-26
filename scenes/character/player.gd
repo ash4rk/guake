@@ -48,6 +48,17 @@ func _physics_process(delta):
 
 func _process_input(_delta):
 	# ----------------------------------
+	# Capturing/Freeing the cursor
+	if Input.is_action_just_pressed("cancel"):
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# ----------------------------------
+	
+	if is_dead: return
+
+	# ----------------------------------
 	# Walking
 	input_dir = Vector3()
 	var cam_xform = camera.get_global_transform()
@@ -77,18 +88,7 @@ func _process_input(_delta):
 			velocity.y = JUMP_SPEED
 	# ----------------------------------
 
-	# ----------------------------------
-	# Capturing/Freeing the cursor
-	if Input.is_action_just_pressed("cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	# ----------------------------------
-
 func _process_movement(delta):
-	if is_dead: return
-	
 	input_dir.y = 0
 	input_dir = input_dir.normalized()
 
@@ -130,18 +130,28 @@ func _input(event):
 		camera_rot.x = clamp(camera_rot.x, -70, 70)
 		rotation_helper.rotation_degrees = camera_rot
 
+func _handle_death(from_death):
+	is_dead = true
+	jumper_velocity = -(from_death - global_position).normalized() * 150
+	weapon_holder.hide()
+
+func _revive():
+	position = Vector3.ZERO
+	is_dead = false
+	weapon_holder.show()
+	heal(MAX_HEALTH)
+
 @rpc("any_peer")
-func receive_damage():
+func receive_damage(from: Vector3 = Vector3.ZERO):
 	if is_dead: return
 	
 	health -= 1
 	health_changed.emit(health)
 	if health <= 0:
-		is_dead = true
+		_handle_death(from)
 		await get_tree().create_timer(6.0).timeout
-		position = Vector3.ZERO
-		is_dead = false
-		heal(MAX_HEALTH)
+		_revive()
+
 
 @rpc("any_peer")
 func heal(value: int):
