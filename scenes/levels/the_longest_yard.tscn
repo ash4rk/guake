@@ -82,14 +82,14 @@ size = Vector3(5, 7.563, 13.2136)
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D13" type="CSGPolygon3D" parent="Level/RightThirdFloor"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 4.7, -0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, -1.48231e-21, -1, 0, -4.37114e-08, -5, 5.0812, -0.5)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
 depth = 5.0
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D14" type="CSGPolygon3D" parent="Level/RightThirdFloor"]
-transform = Transform3D(-4.37114e-08, 5.29396e-22, -1, 0, 1, 2.11758e-21, 1, 0, -4.37114e-08, -8.45274, -3.97701, 0.140985)
+transform = Transform3D(-4.37114e-08, 5.29396e-22, -1, 0, 1, 2.11758e-21, 1, 0, -4.37114e-08, -8.45274, -3.77884, 0.0340462)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 2.06337, -3.08884)
 depth = 5.0
@@ -98,6 +98,21 @@ material = ExtResource("7_pwfh5")
 [node name="Jumper" parent="Level/RightThirdFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
 transform = Transform3D(0.939693, 0.34202, -8.74228e-08, 0.342021, -0.939693, 0, -8.21506e-08, -2.99004e-08, -1, 2.96824, -2.2554, -2.52924)
 force = 95.0
+
+[node name="Borders" type="CSGPolygon3D" parent="Level/RightThirdFloor"]
+transform = Transform3D(1, 0, -5.2213e-23, 0, 1, 0, 0, 0, 2.07, 0, 0, 1)
+use_collision = true
+polygon = PackedVector2Array(-2, -4, -2, 1, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10, 2, -10, -4)
+depth = 0.5
+material = ExtResource("7_pwfh5")
+
+[node name="SubtractBorders" type="CSGPolygon3D" parent="Level/RightThirdFloor/Borders"]
+transform = Transform3D(0.9, 0, -5.2213e-23, 0, 0.9, 0, 0, 0, 1, -0.605988, 1.01007, 0)
+operation = 2
+use_collision = true
+polygon = PackedVector2Array(-2, -4, -2, 1, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10, 2, -10, -4)
+depth = 0.5
+material = ExtResource("7_pwfh5")
 
 [node name="LeftSecondFloor" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.134443, 7.66435, 41.9952)
@@ -125,7 +140,7 @@ size = Vector3(5, 7.563, 13.2136)
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D13" type="CSGPolygon3D" parent="Level/LeftThirdFloor"]
-transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, -4.99999, 1.18838, -0.137037)
+transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, -4.99999, 0.951599, -0.137037)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
 depth = 5.0
@@ -141,6 +156,21 @@ material = ExtResource("7_pwfh5")
 [node name="Jumper" parent="Level/LeftThirdFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
 transform = Transform3D(0.939693, 0.34202, -8.74228e-08, 0.342021, -0.939693, 0, -8.21506e-08, -2.99004e-08, -1, 2.96824, -2.2554, -2.52924)
 force = 95.0
+
+[node name="Borders" type="CSGPolygon3D" parent="Level/LeftThirdFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.07011, 0, 0, -0.506355)
+use_collision = true
+polygon = PackedVector2Array(-2.06401, -1.23167, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10.0866, -1.52574)
+depth = 0.5
+material = ExtResource("7_pwfh5")
+
+[node name="SubtractBorders" type="CSGPolygon3D" parent="Level/LeftThirdFloor/Borders"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, -1.77636e-15, 2.253, -0.0643635, 0.965927, -0.140751)
+operation = 2
+use_collision = true
+polygon = PackedVector2Array(-2, -4, -2, 1, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10, 2, -10, -4)
+depth = 0.5
+material = ExtResource("7_pwfh5")
 
 [node name="CentralBridgeSecondFloor" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.365, 14.3051, 0)
@@ -299,6 +329,7 @@ force = 25.0
 
 [node name="JumperRightSecondFloor" parent="Level" instance=ExtResource("8_f7di5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0378, 15.2258, -41.9666)
+force = 25.0
 
 [node name="TeleportLeftSecondFloor" parent="Level" node_paths=PackedStringArray("exit_point") instance=ExtResource("10_t5wvh")]
 transform = Transform3D(0.606932, 0, -0.794754, 0, 1, 0, 0.794754, 0, 0.606932, -7.43197, 15.171, 47.4203)
@@ -310,6 +341,16 @@ exit_point = NodePath("../TeleportExitCentralRamp")
 
 [node name="TeleportExitCentralRamp" type="Node3D" parent="Level"]
 transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, 25.552, 16.9726, 0.0724213)
+
+[node name="HealthPickup" parent="Level" instance=ExtResource("11_k2i1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2013, 14.6077, 0.0278214)
+is_respawnable = true
+respawn_time = 1.0
+
+[node name="AmmoPickup" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.63399, 15.2478, -42.6898)
+is_respawnable = true
+respawn_time = 5.0
 
 [node name="Reference" type="Node3D" parent="Level"]
 visible = false
@@ -393,16 +434,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 operation = 2
 size = Vector3(22, 10, 14)
 material = ExtResource("7_pwfh5")
-
-[node name="HealthPickup" parent="Level/Reference" instance=ExtResource("11_k2i1m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4324, 0.46872, 86.1814)
-is_respawnable = true
-respawn_time = 1.0
-
-[node name="AmmoPickup" parent="Level/Reference" instance=ExtResource("9_obcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.2027, 0, 95.1631)
-is_respawnable = true
-respawn_time = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
