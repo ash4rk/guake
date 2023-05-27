@@ -3,7 +3,7 @@ extends CharacterBody3D
 class_name Player
 
 signal health_changed(health_value)
-signal ammo_changed(ammo_value)
+signal displayed_ammo_changed(ammo_value)
 signal player_teleported()
 
 # Movement
@@ -176,7 +176,6 @@ func receive_damage(damage_value: int = 1, from: Vector3 = Vector3.ZERO):
 
 func kill():
 	receive_damage(health)
-	
 
 @rpc("any_peer")
 func heal(value: int):
@@ -189,11 +188,12 @@ func gain_ammo(weapon_id : int, value):
 	match weapon_id:
 		WeaponHolder.WEAPONS.PISTOL:
 			weapon_holder.pistol.ammo += value
-			ammo_changed.emit(weapon_holder.pistol.ammo)
 		WeaponHolder.WEAPONS.ASSAULT_RIFLE:
 			weapon_holder.assault_rifle.ammo += value
-			ammo_changed.emit(weapon_holder.assault_rifle.ammo)
 		WeaponHolder.WEAPONS.SHOTGUN:
 			weapon_holder.shotgun.ammo += value
-			ammo_changed.emit(weapon_holder.shotgun.ammo)
-
+		WeaponHolder.WEAPONS.BAZOOKA:
+			weapon_holder.bazooka.ammo += value
+		WeaponHolder.WEAPONS.SNIPER_RIFLE:
+			weapon_holder.sniper_rifle.ammo += value
+	weapon_holder.update_weapon()

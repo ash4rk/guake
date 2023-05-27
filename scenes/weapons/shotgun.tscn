@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://p3tku27y1urv"]
+[gd_scene load_steps=9 format=3 uid="uid://p3tku27y1urv"]
 
 [ext_resource type="PackedScene" uid="uid://44bbjalsjiv" path="res://assets/double_barrel.glb" id="1_i58aq"]
+[ext_resource type="Script" path="res://scenes/weapons/shotgun.gd" id="2_0u81f"]
 [ext_resource type="Texture2D" uid="uid://bhkxcf1jlhy4p" path="res://assets/double_barrel.png" id="2_r6k1s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k88pw"]
@@ -20,6 +21,8 @@ albedo_texture = ExtResource("2_r6k1s")
 
 [node name="Shotgun" instance=ExtResource("1_i58aq")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("2_0u81f")
+ammo = 2
 
 [node name="Base" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_k88pw")

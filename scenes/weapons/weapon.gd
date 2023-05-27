@@ -22,7 +22,7 @@ func _ready():
 	randomize()
 
 func fire(_delta):
-	player.emit_signal("ammo_changed", ammo)
+	player.emit_signal("displayed_ammo_changed", ammo)
 
 # Not yet in use
 func reload():
@@ -37,5 +37,5 @@ func reload():
 	if ammo > 0:
 		can_fire = true
 	is_reloading = false
-	player.emit_signal("ammo_changed", ammo)
+	player.emit_signal("displayed_ammo_changed", ammo)
 
