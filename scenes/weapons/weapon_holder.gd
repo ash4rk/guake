@@ -15,7 +15,6 @@ var current_weapon = 1
 @onready var shotgun = $Shotgun
 
 func _ready():
-	print(anim_player)
 	weapon_switch()
 
 func _input(_event):
