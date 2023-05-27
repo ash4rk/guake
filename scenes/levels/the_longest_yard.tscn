@@ -621,33 +621,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2256, 0.211734, -25.8876)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75935, 0.211734, -26.0915)
 
 [node name="HealthRainbow" type="Node3D" parent="Level"]
-
-[node name="HealthPickup2" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.402, 31, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.285387, 0, 0)
 
 [node name="HealthPickup3" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.402, 35, -16)
-
-[node name="HealthPickup4" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.529, 39, -11)
-
-[node name="HealthPickup9" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.529, 41.1037, 6)
-
-[node name="HealthPickup10" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 0.999936, -0.0113095, 0, 0.0113095, 0.999936, -23.529, 42, -6)
-
-[node name="HealthPickup5" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5291, 45.275, 0.263629)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.606, 30.0833, -9.69329)
 
 [node name="HealthPickup6" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.402, 31, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.606, 28.7135, -12.7779)
+
+[node name="HealthPickup4" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.606, 32.9122, 0.056253)
+
+[node name="HealthPickup9" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(0.999999, 0, -0.00125664, 0, 1, 0, 0.00125664, 0, 0.999999, -23.606, 31.9229, 3.24426)
+
+[node name="HealthPickup10" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 0.999936, -0.0113095, 0, 0.0113095, 0.999936, -23.606, 31.554, -6.71405)
+
+[node name="HealthPickup5" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.606, 32.8048, -3.24849)
 
 [node name="HealthPickup7" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.546, 34.1037, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.606, 29.1254, 8.91278)
 
 [node name="HealthPickup8" parent="Level/HealthRainbow" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.546, 37.3403, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.606, 30.733, 5.85771)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
