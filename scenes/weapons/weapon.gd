@@ -29,6 +29,8 @@ func fire(_delta):
 	player.emit_signal("displayed_ammo_changed", ammo, spare_ammo)
 
 func reload():
+	if spare_ammo < 1: return
+	
 	$ReloadAudioStreamPlayer3D.play()
 	is_reloading = true
 	can_fire = false

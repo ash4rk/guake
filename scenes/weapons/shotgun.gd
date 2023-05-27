@@ -15,6 +15,7 @@ func _process(delta):
 	if ammo <= 0 and !is_reloading:
 		can_fire = false
 		reload()
+		
 	if Input.is_action_pressed("shoot") and can_fire:
 		fire(delta)
 
