@@ -2113,6 +2113,7 @@ script = ExtResource("1_8a3qu")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.06, 0)
+visible = false
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
 bones/0/name = "root"
@@ -2304,16 +2305,25 @@ ammo = 99
 
 [node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_hl1ab")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0777168, -0.236788, -0.126612)
+visible = false
 damage = 7
 
 [node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_ar017")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.206, -0.183, -0.327)
-visible = false
-reload_time = 1.0
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.182, -0.121, -0.268)
 firerate = 0.3
+
+[node name="Barrel" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578286, -5.2917)
+
+[node name="Shell_Left" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base/Barrel" index="0"]
+transform = Transform3D(0.203254, 0.022711, 0.0572307, -0.0879282, -0.0164576, 0.128164, 0.0521529, -0.116258, -0.00696301, -0.460306, 0.000513375, 4.04247)
+
+[node name="Shell_Right" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base/Barrel" index="1"]
+transform = Transform3D(0.215752, 0.0201656, 0.0435763, -0.0735058, -0.0110257, 0.125339, 0.043976, -0.117364, -0.00428753, 0.466958, 0.000513136, 4.04247)
 
 [node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun"]
 transform = Transform3D(0.0758312, 0, -0.203968, 0, 0.208, 0, 0.379498, 0, 0.0407568, -0.108, 0.105, -0.217)
+visible = false
 material_override = SubResource("StandardMaterial3D_n7hoi")
 mesh = SubResource("QuadMesh_s55ed")
 
@@ -2379,3 +2389,5 @@ volume_db = 0.1
 bus = &"SFX"
 
 [connection signal="animation_finished" from="RotationHelper/PlayerEyes/WeaponAnimationPlayer" to="RotationHelper/PlayerEyes/WeaponHolder" method="_on_weapon_animation_player_animation_finished"]
+
+[editable path="RotationHelper/PlayerEyes/WeaponHolder/Shotgun"]
