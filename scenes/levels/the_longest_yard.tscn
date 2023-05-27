@@ -537,37 +537,37 @@ is_respawnable = true
 respawn_time = 60.0
 
 [node name="SmallAmmoPickup" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, 28.2704)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 16.139, 28.2704)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup2" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, 28.2704)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 16.139, 28.2704)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup3" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, 28.2704)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 16.139, 28.2704)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup4" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, -26.3177)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 16.2353, -26.3177)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup5" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, -26.3177)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 16.2353, -26.3177)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup6" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, -26.3177)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 16.2353, -26.3177)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
@@ -575,6 +575,47 @@ respawn_time = 30.0
 [node name="SmallAmmoPickup7" parent="Level" instance=ExtResource("9_obcue")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 1.00554, -26.3177)
 AMMO_VALUE = 10
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup11" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -27.1471, 25.6522, -43.2083)
+AMMO_VALUE = 4
+WEAPON_ID = 2
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup12" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -26.2612, 25.6522, -41.2942)
+AMMO_VALUE = 4
+WEAPON_ID = 2
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup13" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -24.723, 25.6522, -43.2083)
+AMMO_VALUE = 4
+WEAPON_ID = 2
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup14" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.374726, 0, -0.331029, 0, 0.5, 0, 0.331029, 0, 0.374726, -28.4992, 26.715, 38.1497)
+AMMO_VALUE = 4
+WEAPON_ID = 2
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup15" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.374726, 0, -0.331029, 0, 0.5, 0, 0.331029, 0, 0.374726, -29.1025, 26.715, 40.1707)
+AMMO_VALUE = 4
+WEAPON_ID = 2
+is_respawnable = true
+respawn_time = 30.0
+
+[node name="SmallAmmoPickup16" parent="Level" instance=ExtResource("9_obcue")]
+transform = Transform3D(0.374726, 0, -0.331029, 0, 0.5, 0, 0.331029, 0, 0.374726, -26.6825, 26.715, 39.7545)
+AMMO_VALUE = 4
 WEAPON_ID = 2
 is_respawnable = true
 respawn_time = 30.0
@@ -594,21 +635,21 @@ respawn_time = 30.0
 [node name="SmallAmmoPickup10" parent="Level" instance=ExtResource("9_obcue")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.6051, 1.00554, -25.8442)
 AMMO_VALUE = 10
-WEAPON_ID = 2
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="AmmoPickup2" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20089, 58.9749, -0.033645)
-AMMO_VALUE = 50
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20089, 60.5231, -0.033645)
+AMMO_VALUE = 24
+WEAPON_ID = 2
 is_respawnable = true
-respawn_time = 60.0
+respawn_time = 45.0
 
 [node name="AmmoPickup3" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0396, 1.13897, -0.0334405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0396, 2.2184, -0.0334405)
 AMMO_VALUE = 50
 is_respawnable = true
-respawn_time = 60.0
+respawn_time = 45.0
 
 [node name="HealthPickup11" parent="Level" instance=ExtResource("10_uybqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9897, 0.211734, 26.1875)
