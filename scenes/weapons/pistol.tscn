@@ -18,3 +18,14 @@ firerate = 0.7
 
 [node name="Glock" parent="." instance=ExtResource("1_801kl")]
 transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0, 0, 0)
+
+[node name="slide" parent="Glock" index="0"]
+transform = Transform3D(1.85707, 0, 9.76996e-15, 0, 0.26595, 0, -6.39488e-14, 0, 0.339185, 0, 1.03947, 0)
+
+[node name="barrel" parent="Glock" index="3"]
+transform = Transform3D(0.0218046, 1.30364, 1.77636e-14, -0.999762, 0.0284321, 0, 0, -1.77636e-14, 1, 1.1658, 1.0385, -3.19744e-14)
+
+[node name="magazine" parent="Glock" index="4"]
+transform = Transform3D(0.927184, -2.77084e-08, -0.374607, -0.374607, -7.38892e-08, -0.927184, 1.49012e-08, 0.619827, -1.19209e-07, -1.25818, -0.516949, 3.70557e-06)
+
+[editable path="Glock"]

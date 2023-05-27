@@ -35,13 +35,12 @@ func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 
 func _ready():
+	$AnimationTree.active = true
 	if not is_multiplayer_authority():
 		$Armature.show()
 		return
 	else:
 		$Armature.hide()
-
-	$AnimationTree.active = true
 	camera.current = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
