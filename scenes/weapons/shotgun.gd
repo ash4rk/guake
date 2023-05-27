@@ -14,7 +14,6 @@ func _process(delta):
 		pass
 	if ammo <= 0 and !is_reloading:
 		can_fire = false
-		$ReloadAudioStreamPlayer3D.play()
 		reload()
 	if Input.is_action_pressed("shoot") and can_fire:
 		fire(delta)
