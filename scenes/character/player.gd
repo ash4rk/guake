@@ -9,7 +9,7 @@ signal got_ammo()
 
 # Movement
 const GRAVITY = -24.8
-const MAX_SPEED = 20
+const MAX_SPEED = 17
 const JUMP_SPEED = 10
 const ACCEL = 4.5
 const DEACCEL= 16

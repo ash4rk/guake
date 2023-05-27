@@ -237,11 +237,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61855, -2.2406, 0)
 
 [node name="Floor2" type="CSGBox3D" parent="Level"]
 use_collision = true
-size = Vector3(50, 0.5, 100)
+size = Vector3(50, 0.5, 70)
 material = ExtResource("3_w7hre")
 
 [node name="RightSecondFloor" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134443, 7.66435, -42.0262)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134443, 7.66435, -27.0685)
 use_collision = true
 size = Vector3(50, 15.067, 16)
 material = ExtResource("7_pwfh5")
@@ -253,20 +253,20 @@ size = Vector3(50, 11.7265, 16.1051)
 material = ExtResource("7_pwfh5")
 
 [node name="RightThirdFloor" type="CSGPolygon3D" parent="Level"]
-transform = Transform3D(1, 0, 1.49502e-08, -1.49502e-08, 4.10753e-08, 1, 0, -1, 4.10753e-08, -17.2529, 25, -38.4531)
+transform = Transform3D(1, 0, 1.49502e-08, -1.49502e-08, 4.10753e-08, 1, 0, -1, 4.10753e-08, -17.2529, 25, -23.4954)
 use_collision = true
 polygon = PackedVector2Array(-2, -4, -2, 1, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10, 2, -10, -4)
 depth = 0.5
 material = ExtResource("5_j2lca")
 
 [node name="RightSecondFloor" type="CSGBox3D" parent="Level/RightThirdFloor"]
-transform = Transform3D(1, 2.38228e-21, -2.52237e-23, 0, 1, -1.59872e-13, 0, 0, 1, -7.48689, 1.31416, -6.80792)
+transform = Transform3D(1, 2.38228e-21, -2.52238e-23, 0, 1, -1.59872e-13, 0, 0, 1, -7.48689, 1.31416, -6.80792)
 use_collision = true
 size = Vector3(5, 7.563, 13.2136)
 material = ExtResource("5_j2lca")
 
 [node name="CSGBox3D13" type="CSGPolygon3D" parent="Level/RightThirdFloor"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, -1.48231e-21, -1, 0, -4.37114e-08, -5, 5.0812, -0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, -1.90582e-21, -1, 0, -4.37114e-08, -5, 5.0812, -0.5)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
 depth = 5.0
@@ -281,7 +281,7 @@ material = ExtResource("6_riwj5")
 
 [node name="Jumper" parent="Level/RightThirdFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
 transform = Transform3D(0.939693, 0.34202, -8.74228e-08, 0.342021, -0.939693, 0, -8.21506e-08, -2.99004e-08, -1, 2.96824, -2.2554, -2.52924)
-force = 95.0
+force = 70.0
 
 [node name="Borders" type="CSGPolygon3D" parent="Level/RightThirdFloor"]
 transform = Transform3D(1, 0, -5.2213e-23, 0, 1, 0, 0, 0, 2.07, 0, 0, 1)
@@ -299,7 +299,7 @@ depth = 0.5
 material = ExtResource("7_pwfh5")
 
 [node name="LeftSecondFloor" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.134443, 7.66435, 41.9952)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.134443, 7.66435, 27.0711)
 use_collision = true
 size = Vector3(50, 15.067, 16)
 material = ExtResource("7_pwfh5")
@@ -311,7 +311,7 @@ size = Vector3(50, 12.4667, 16.1051)
 material = ExtResource("7_pwfh5")
 
 [node name="LeftThirdFloor" type="CSGPolygon3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -17.2529, 25, 34.8676)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -17.2529, 25, 19.9435)
 use_collision = true
 polygon = PackedVector2Array(-2, -4, -2, 1, -1.5, 3.5, 0, 5, 2, 6, 4, 6, 7.5, 6, 11.5, 6, 11.5, 14, 7.5, 14, 3, 14, 0, 26, -16, 26, -16, 6, -12.5, 5, -11, 3.5, -10, 2, -10, -4)
 depth = 0.5
@@ -339,7 +339,7 @@ material = ExtResource("6_riwj5")
 
 [node name="Jumper" parent="Level/LeftThirdFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
 transform = Transform3D(0.939693, 0.34202, -8.74228e-08, 0.342021, -0.939693, 0, -8.21506e-08, -2.99004e-08, -1, 2.96824, -2.2554, -2.52924)
-force = 95.0
+force = 70.0
 
 [node name="Borders" type="CSGPolygon3D" parent="Level/LeftThirdFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.07011, 0, 0, -0.506355)
@@ -359,7 +359,7 @@ material = ExtResource("7_pwfh5")
 [node name="CentralBridgeSecondFloor" type="CSGBox3D" parent="Level"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.365, 14.3051, 0)
 use_collision = true
-size = Vector3(7.5, 0.5, 68.059)
+size = Vector3(7.5, 0.5, 38.501)
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Level/CentralBridgeSecondFloor"]
@@ -369,31 +369,31 @@ size = Vector3(3.89012, 0.5, 9.1933)
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Level/CentralBridgeSecondFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95661, 0.558074, 25.0164)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95661, 0.558074, 11.6137)
 use_collision = true
 size = Vector3(0.44877, 1.58222, 10.1013)
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Level/CentralBridgeSecondFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9566, 0.558074, -25.0925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9566, 0.558074, -12.5088)
 use_collision = true
 size = Vector3(0.44877, 1.58222, 10.1013)
 material = ExtResource("7_pwfh5")
 
 [node name="CentralBridgeFirstFloor" type="CSGBox3D" parent="Level"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 35, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.4602, 0, 0)
 use_collision = true
-size = Vector3(20.547, 0.5, 7.5)
+size = Vector3(13.0206, 0.5, 7.5)
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Level/CentralBridgeFirstFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5907, 0, -1.01329e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80289, 0, -8.56995e-07)
 use_collision = true
-size = Vector3(11.2103, 0.5, 11.983)
+size = Vector3(6.69986, 0.5, 11.983)
 material = ExtResource("7_pwfh5")
 
 [node name="CSGBox3D14" type="CSGPolygon3D" parent="Level/CentralBridgeFirstFloor"]
-transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -17.1571, 0.176721, -2.00625)
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0, 3.82137e-15, 8.74228e-08, -1, -12.9583, 0.176721, -2.00625)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 2.03944, -2.91357)
 depth = 5.0
@@ -401,7 +401,7 @@ material = ExtResource("6_riwj5")
 
 [node name="Jumper" parent="Level/CentralBridgeFirstFloor/CSGBox3D14" instance=ExtResource("8_f7di5")]
 transform = Transform3D(0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939692, 0, 8.21506e-08, 2.99004e-08, -1, 2.95268, -2.25073, -2.51506)
-force = 100.0
+force = 70.0
 
 [node name="CentralJumpers" type="CSGPolygon3D" parent="Level"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.74296, 0, -2.62594)
@@ -452,14 +452,14 @@ material = ExtResource("6_riwj5")
 
 [node name="Jumper" parent="Level/CentralJumpers/CSGBox3D15" instance=ExtResource("8_f7di5")]
 transform = Transform3D(-0.707107, 0.707107, -8.74228e-08, 0.707107, 0.707107, 0, 6.18172e-08, -6.18172e-08, -1, 2.13295, 2.89108, -2.7773)
-force = 50.0
+force = 40.0
 
 [node name="Jumper" parent="Level/CentralJumpers" instance=ExtResource("8_f7di5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.35527, 5.07817, -2.7773)
 force = 50.0
 
 [node name="JumpToDD" type="CSGPolygon3D" parent="Level"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -58.6877, 16.5938, 2.37406)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -45.6937, 16.5938, 2.37406)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
 depth = 5.0
@@ -480,21 +480,21 @@ transform = Transform3D(-0.0342717, 0, 0.999413, 0, 1, 0, -0.999413, 0, -0.03427
 exit_point = NodePath("../../TeleportExitCentralRamp")
 
 [node name="SnipePlatform" type="CSGBox3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.029, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.3776, 0, 0)
 use_collision = true
 size = Vector3(15, 2, 15)
 material = ExtResource("4_0j706")
 
 [node name="SniperJumperPlatform2" type="CSGPolygon3D" parent="Level/SnipePlatform"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.52301, -4.00968, -12.3795)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.52301, -4.00968, -12.3795)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 5, 5, 0, 5, 0)
 depth = 5.0
 material = ExtResource("6_riwj5")
 
 [node name="SniperJumper2" parent="Level/SnipePlatform/SniperJumperPlatform2" instance=ExtResource("8_f7di5")]
-transform = Transform3D(-0.707107, 0.707107, 8.74228e-08, 0.707107, 0.707107, 0, -6.18172e-08, 6.18172e-08, -1, 2.19829, 2.82449, -2.58453)
-force = 100.0
+transform = Transform3D(-0.707107, 0.707107, 8.74228e-08, 0.707107, 0.707107, 0, -6.18172e-08, 6.18172e-08, -1, 2.36757, 2.82449, -2.58453)
+force = 65.0
 
 [node name="SniperJumperPlatform" type="CSGPolygon3D" parent="Level/SnipePlatform"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.52301, -4.00968, 7.47799)
@@ -504,23 +504,23 @@ depth = 5.0
 material = ExtResource("6_riwj5")
 
 [node name="SniperJumper" parent="Level/SnipePlatform/SniperJumperPlatform" instance=ExtResource("8_f7di5")]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 2.55312, 2.54308, -2.53256)
-force = 100.0
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3.55271e-14, 3.55271e-14, 1, 2.5535, 2.54308, -2.53256)
+force = 65.0
 
 [node name="JumperLeftSecondFloor" parent="Level" instance=ExtResource("8_f7di5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0378, 15.2258, 38.2133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0378, 15.2258, 22.4938)
 force = 25.0
 
 [node name="JumperRightSecondFloor" parent="Level" instance=ExtResource("8_f7di5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0378, 15.2258, -41.9666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0378, 15.2258, -27.0089)
 force = 25.0
 
 [node name="TeleportLeftSecondFloor" parent="Level" node_paths=PackedStringArray("exit_point") instance=ExtResource("10_t5wvh")]
-transform = Transform3D(0.606932, 0, -0.794754, 0, 1, 0, 0.794754, 0, 0.606932, -7.43197, 15.171, 47.4203)
+transform = Transform3D(0.606932, 0, -0.794754, 0, 1, 0, 0.794754, 0, 0.606932, -7.43197, 15.171, 31.7008)
 exit_point = NodePath("../TeleportExitCentralRamp")
 
 [node name="TeleportRightSecondFloor" parent="Level" node_paths=PackedStringArray("exit_point") instance=ExtResource("10_t5wvh")]
-transform = Transform3D(-0.758646, 0, -0.651503, 0, 1, 0, 0.651503, 0, -0.758646, -7.43197, 15.171, -47.4447)
+transform = Transform3D(-0.758646, 0, -0.651503, 0, 1, 0, 0.651503, 0, -0.758646, -7.43197, 15.171, -32.487)
 exit_point = NodePath("../TeleportExitCentralRamp")
 
 [node name="TeleportExitCentralRamp" type="Node3D" parent="Level"]
@@ -537,61 +537,61 @@ is_respawnable = true
 respawn_time = 60.0
 
 [node name="SmallAmmoPickup" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, 43.9899)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, 28.2704)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup2" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, 43.9899)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, 28.2704)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup3" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, 43.9899)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, 28.2704)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup4" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, -41.2754)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.8126, 15.5697, -26.3177)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup5" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, -41.2754)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6.07976, 15.5697, -26.3177)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup6" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, -41.2754)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 15.5697, -26.3177)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup7" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 1.00554, -41.2754)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 1.00554, -26.3177)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup8" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 1.00554, 41.141)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.422638, 1.00554, 26.3301)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup9" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.6051, 1.00554, 41.141)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.6051, 1.00554, 26.3301)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
 
 [node name="SmallAmmoPickup10" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.6051, 1.00554, -40.8019)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.6051, 1.00554, -25.8442)
 AMMO_VALUE = 10
 is_respawnable = true
 respawn_time = 30.0
@@ -603,22 +603,22 @@ is_respawnable = true
 respawn_time = 60.0
 
 [node name="AmmoPickup3" parent="Level" instance=ExtResource("9_obcue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.691, 1.13897, -0.0334405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0396, 1.13897, -0.0334405)
 AMMO_VALUE = 50
 is_respawnable = true
 respawn_time = 60.0
 
 [node name="HealthPickup11" parent="Level" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9897, 0.211734, 40.9984)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9897, 0.211734, 26.1875)
 
 [node name="HealthPickup12" parent="Level" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75935, 0.211734, 40.9984)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75935, 0.211734, 26.1875)
 
 [node name="HealthPickup13" parent="Level" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2256, 0.211734, -40.8453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2256, 0.211734, -25.8876)
 
 [node name="HealthPickup14" parent="Level" instance=ExtResource("10_uybqr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75935, 0.211734, -41.0492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75935, 0.211734, -26.0915)
 
 [node name="HealthRainbow" type="Node3D" parent="Level"]
 
