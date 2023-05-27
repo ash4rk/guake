@@ -5,6 +5,7 @@ class_name Player
 signal health_changed(health_value)
 signal displayed_ammo_changed(ammo_value)
 signal player_teleported()
+signal got_ammo()
 
 # Movement
 const GRAVITY = -24.8
@@ -197,3 +198,4 @@ func gain_ammo(weapon_id : int, value):
 		WeaponHolder.WEAPONS.SNIPER_RIFLE:
 			weapon_holder.sniper_rifle.ammo += value
 	weapon_holder.update_weapon()
+	got_ammo.emit()

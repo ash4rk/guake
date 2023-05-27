@@ -51,16 +51,17 @@ func update_health_ui(health_value):
 	health_label.text = str(health_value)
 
 func update_ammo_ui(ammo_value):
-	if int(ammo_label.text) < ammo_value:
-		hud_anim_player.play("yellow_tint_flash")
-		
 	ammo_label.text = str(ammo_value)
+
+func _on_got_ammo():
+	hud_anim_player.play("yellow_tint_flash")
 
 func _on_multiplayer_spawner_spawned(node):
 	if node.is_multiplayer_authority():
 		node.health_changed.connect(update_health_ui)
 		node.displayed_ammo_changed.connect(update_ammo_ui)
 		node.player_teleported.connect(_on_player_teleported)
+		node.got_ammo.connect(_on_got_ammo)
 
 func _on_death_area_3d_body_entered(body):
 	body.kill()
