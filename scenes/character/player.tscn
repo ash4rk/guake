@@ -2305,13 +2305,12 @@ ammo = 99
 [node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_hl1ab")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0777168, -0.236788, -0.126612)
 damage = 7
-ammo = 20
-max_ammo = 1000
-spare_ammo = null
 
 [node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_ar017")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.206, -0.183, -0.327)
 visible = false
+reload_time = 1.0
+firerate = 0.3
 
 [node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun"]
 transform = Transform3D(0.0758312, 0, -0.203968, 0, 0.208, 0, 0.379498, 0, 0.0407568, -0.108, 0.105, -0.217)
@@ -2335,8 +2334,6 @@ visible = false
 transform = Transform3D(0.185757, 0, -0.481482, 0, 0.491, 0, 0.929623, 0, 0.0962096, -0.432, 0.603, -0.772)
 material_override = SubResource("StandardMaterial3D_n7hoi")
 mesh = SubResource("QuadMesh_s55ed")
-
-[node name="AssaultRifle2" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_hl1ab")]
 
 [node name="RayCast3D" type="RayCast3D" parent="RotationHelper/PlayerEyes"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

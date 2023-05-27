@@ -28,11 +28,11 @@ func _ready():
 func fire(_delta):
 	player.emit_signal("displayed_ammo_changed", ammo)
 
-# Not yet in use
 func reload():
 	is_reloading = true
 	can_fire = false
-#	$AnimationPlayer.play("reload")
+	weapon_anim_player.stop(true)
+	weapon_anim_player.play("reload")
 	await get_tree().create_timer(reload_time).timeout
 	if is_reloading == true:
 		var ammo_to_add = min(max_ammo - ammo, spare_ammo)

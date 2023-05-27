@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dblp3hl7wuwpm"]
+[gd_scene load_steps=18 format=3 uid="uid://dblp3hl7wuwpm"]
 
 [ext_resource type="PackedScene" uid="uid://cnt6k8biph7na" path="res://assets/m4a1.glb" id="1_4ducw"]
 [ext_resource type="Script" path="res://scenes/weapons/assault_rifle.gd" id="2_p1gw1"]
@@ -17,16 +17,16 @@ albedo_texture = ExtResource("2_ty3ut")
 offsets = PackedFloat32Array(0, 0.0991379, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5yw4n"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5324y"]
 gradient = SubResource("Gradient_wg7qf")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ekvc"]
 gravity = Vector3(0, 0, 0)
 angle_min = 45.0
 angle_max = 45.0
-color_ramp = SubResource("GradientTexture1D_5yw4n")
+color_ramp = SubResource("GradientTexture1D_5324y")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuuoe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gg48i"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
@@ -40,7 +40,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lpx2p"]
-material = SubResource("StandardMaterial3D_yuuoe")
+material = SubResource("StandardMaterial3D_gg48i")
 size = Vector2(1.5, 1.5)
 orientation = 2
 
@@ -128,24 +128,53 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_o20jy"]
+resource_name = "reload"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("M4A1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, -2.26893, 0), Vector3(0, 3.14159, 0), Vector3(6.28319, 3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("M4A1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.4001, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.17), Vector3(0, 0, -0.17), Vector3(0, 0, -0.17), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tprh3"]
 _data = {
 "RESET": SubResource("Animation_ql2ht"),
+"reload": SubResource("Animation_o20jy"),
 "shoot": SubResource("Animation_kudp2")
 }
 
 [node name="AssaultRifle" instance=ExtResource("1_4ducw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.169566)
 script = ExtResource("2_p1gw1")
-damage = 1
-ammo = 999
-max_ammo = 999
-spare_ammo = 999
+damage = 11
+ammo = 30
+max_ammo = 1000
 ammo_per_shot = 1
-reload_time = 1.0
+reload_time = 2.0
 firerate = 0.1
 
 [node name="M4A1" parent="." index="0"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.17)
 surface_material_override/0 = SubResource("StandardMaterial3D_58vf2")
 
 [node name="M4A1_magazine" parent="M4A1" index="0"]
