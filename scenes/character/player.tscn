@@ -2310,9 +2310,10 @@ damage = 7
 [node name="M4A1" parent="RotationHelper/PlayerEyes/WeaponHolder/AssaultRifle" index="0"]
 transform = Transform3D(-1, 1.13231e-11, 2.53518e-06, 0, 1, -4.46638e-06, -2.53518e-06, -4.46638e-06, -1, 0, 0, 0)
 
-[node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_ar017")]
+[node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" node_paths=PackedStringArray("ray_container") instance=ExtResource("5_ar017")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.182, -0.121, -0.268)
 visible = false
+ray_container = NodePath("../../RayContainer")
 firerate = 0.3
 
 [node name="Barrel" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base" index="0"]
@@ -2352,6 +2353,25 @@ mesh = SubResource("QuadMesh_s55ed")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 visible = false
 target_position = Vector3(0, -1000, 0)
+
+[node name="RayContainer" type="Node3D" parent="RotationHelper/PlayerEyes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="RotationHelper/PlayerEyes/RayContainer"]
+target_position = Vector3(0, -100, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="RotationHelper/PlayerEyes/RayContainer"]
+target_position = Vector3(0, -100, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="RotationHelper/PlayerEyes/RayContainer"]
+target_position = Vector3(0, -100, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="RotationHelper/PlayerEyes/RayContainer"]
+target_position = Vector3(0, -100, 0)
+
+[node name="RayCast3D5" type="RayCast3D" parent="RotationHelper/PlayerEyes/RayContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+target_position = Vector3(0, -100, 0)
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="RotationHelper/PlayerEyes"]
 root_node = NodePath("../../..")
