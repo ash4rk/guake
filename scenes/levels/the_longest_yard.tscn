@@ -698,12 +698,28 @@ theme_override_font_sizes/font_size = 80
 text = "100"
 horizontal_alignment = 1
 
-[node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 80
 text = "30"
+horizontal_alignment = 2
+
+[node name="Separation" type="Label" parent="CanvasLayer/HUD/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "/"
 horizontal_alignment = 1
+
+[node name="SpareAmmoLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "30"
 
 [node name="BloodOverlay" type="TextureRect" parent="CanvasLayer/HUD"]
 visible = false

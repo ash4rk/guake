@@ -3,7 +3,7 @@ extends CharacterBody3D
 class_name Player
 
 signal health_changed(health_value)
-signal displayed_ammo_changed(ammo_value)
+signal displayed_ammo_changed(ammo_value, spare_ammo_value)
 signal player_teleported()
 signal got_ammo()
 
@@ -159,16 +159,17 @@ func heal(value: int):
 
 @rpc("any_peer")
 func gain_ammo(weapon_id : int, value):
+	# TODO: Refactor to oneliner
 	match weapon_id:
 		WeaponHolder.WEAPONS.PISTOL:
-			weapon_holder.pistol.ammo += value
+			weapon_holder.pistol.spare_ammo += value
 		WeaponHolder.WEAPONS.ASSAULT_RIFLE:
-			weapon_holder.assault_rifle.ammo += value
+			weapon_holder.assault_rifle.spare_ammo += value
 		WeaponHolder.WEAPONS.SHOTGUN:
-			weapon_holder.shotgun.ammo += value
+			weapon_holder.shotgun.spare_ammo += value
 		WeaponHolder.WEAPONS.BAZOOKA:
-			weapon_holder.bazooka.ammo += value
+			weapon_holder.bazooka.spare_ammo += value
 		WeaponHolder.WEAPONS.SNIPER_RIFLE:
-			weapon_holder.sniper_rifle.ammo += value
+			weapon_holder.sniper_rifle.spare_ammo += value
 	weapon_holder.update_weapon()
 	got_ammo.emit()

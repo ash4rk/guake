@@ -26,7 +26,7 @@ func _ready():
 	randomize()
 
 func fire(_delta):
-	player.emit_signal("displayed_ammo_changed", ammo)
+	player.emit_signal("displayed_ammo_changed", ammo, spare_ammo)
 
 func reload():
 	$ReloadAudioStreamPlayer3D.play()
@@ -42,7 +42,7 @@ func reload():
 	if ammo > 0:
 		can_fire = true
 	is_reloading = false
-	player.emit_signal("displayed_ammo_changed", ammo)
+	player.emit_signal("displayed_ammo_changed", ammo, spare_ammo)
 
 @rpc("call_local")
 func _place_decal(point: Vector3):

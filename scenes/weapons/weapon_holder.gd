@@ -44,7 +44,7 @@ func update_weapon():
 		get_child(child).process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	get_child(current_weapon_id).show()
 	get_child(current_weapon_id).process_mode = Node.PROCESS_MODE_INHERIT
-	player.emit_signal("displayed_ammo_changed", current_weapon.ammo)
+	player.emit_signal("displayed_ammo_changed", current_weapon.ammo, current_weapon.spare_ammo)
 
 func _on_weapon_animation_player_animation_finished(anim_name):
 	if anim_name == "shoot":

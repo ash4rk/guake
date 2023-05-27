@@ -2,7 +2,8 @@ extends Node
 
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 @onready var health_label = $CanvasLayer/HUD/HBoxContainer/HealthLabel
-@onready var ammo_label = $CanvasLayer/HUD/HBoxContainer/AmmoLabel
+@onready var ammo_label = $CanvasLayer/HUD/HBoxContainer/HBoxContainer/AmmoLabel
+@onready var spare_ammo_label = $CanvasLayer/HUD/HBoxContainer/HBoxContainer/SpareAmmoLabel
 @onready var hud_anim_player = $CanvasLayer/HUD/AnimationPlayer
 
 const Player = preload("res://scenes/character/player.tscn")
@@ -51,8 +52,9 @@ func update_health_ui(health_value):
 	health_bar.value = health_value
 	health_label.text = str(health_value)
 
-func update_ammo_ui(ammo_value):
+func update_ammo_ui(ammo_value = -1, spare_ammo_value = -1):
 	ammo_label.text = str(ammo_value)
+	spare_ammo_label.text = str(spare_ammo_value)
 
 func _on_got_ammo():
 	hud_anim_player.play("yellow_tint_flash")
