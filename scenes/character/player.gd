@@ -21,10 +21,19 @@ const MAX_HEALTH: int = 100
 var is_dead: bool = false
 
 # Movement
-var input_dir = Vector3()
 @onready var camera: Camera3D = $RotationHelper/PlayerEyes
 @onready var rotation_helper: Node3D = $RotationHelper
 var jumper_velocity: = Vector3.ZERO
+
+# Set by the authority, synchronized on spawn.
+@export var player := 1 :
+	set(id):
+		player = id
+		# Give authority over the player input to the appropriate peer.
+		$PlayerInput.set_multiplayer_authority(id)
+# Player synchronized input.
+@onready var input = $PlayerInput
+
 # Stats
 @onready var weapon_holder: WeaponHolder = $RotationHelper/PlayerEyes/WeaponHolder
 @onready var ray_cast: RayCast3D = $RotationHelper/PlayerEyes/RayCast3D
@@ -45,69 +54,31 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
-	if not is_multiplayer_authority(): return
-	
-	_process_input(delta)
 	_process_movement(delta)
 	_process_animation()
 	_process_hud()
 
-func _process_input(_delta):
-	# ----------------------------------
-	# Capturing/Freeing the cursor
-	if Input.is_action_just_pressed("cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	# ----------------------------------
-	
-	if is_dead: return
-
-	# ----------------------------------
-	# Walking
-	input_dir = Vector3()
-	var cam_xform = camera.get_global_transform()
-
-	var input_movement_vector = Vector2()
-
-	if Input.is_action_pressed("forward"):
-		input_movement_vector.y += 1
-	if Input.is_action_pressed("backward"):
-		input_movement_vector.y -= 1
-	if Input.is_action_pressed("left"):
-		input_movement_vector.x -= 1
-	if Input.is_action_pressed("right"):
-		input_movement_vector.x += 1
-
-	input_movement_vector = input_movement_vector.normalized()
-
-	# Basis vectors are already normalized.
-	input_dir += -cam_xform.basis.z * input_movement_vector.y
-	input_dir += cam_xform.basis.x * input_movement_vector.x
-	# ----------------------------------
-
-	# ----------------------------------
-	# Jumping
-	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):
-			velocity.y = JUMP_SPEED
-	# ----------------------------------
 
 func _process_movement(delta):
-	input_dir.y = 0
-	input_dir = input_dir.normalized()
+	input.input_dir.y = 0
+	input.input_dir = input.input_dir.normalized()
 
+	# Add the gravity
 	velocity.y += delta * GRAVITY
-
+	
+	# Handle jump and reset jump state
+	if input.is_jumping and is_on_floor():
+		velocity.y = JUMP_SPEED
+	input.is_jumping = false
+	
 	var hvel = velocity
 	hvel.y = 0
 
-	var target = input_dir
+	var target = input.input_dir
 	target *= MAX_SPEED
 
 	var accel
-	if input_dir.dot(hvel) > 0:
+	if input.input_dir.dot(hvel) > 0:
 		accel = ACCEL
 	else:
 		accel = DEACCEL
@@ -116,17 +87,20 @@ func _process_movement(delta):
 	velocity.x = hvel.x
 	velocity.z = hvel.z
 	
+	# Impact jumper velocity and reset it
 	velocity += jumper_velocity
+	jumper_velocity = Vector3.ZERO
 	
 	move_and_slide()
-	jumper_velocity = Vector3.ZERO
 
 func _process_animation():
 	$AnimationTree.set("parameters/conditions/is_dead", is_dead)
-	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector3.ZERO and !is_dead)
-	$AnimationTree.set("parameters/conditions/walk", input_dir != Vector3.ZERO and !is_dead)
+	$AnimationTree.set("parameters/conditions/idle", input.input_dir == Vector3.ZERO and !is_dead)
+	$AnimationTree.set("parameters/conditions/walk", input.input_dir != Vector3.ZERO and !is_dead)
 
 func _process_hud():
+	if not is_multiplayer_authority():
+		return
 	var cursor_object = ray_cast.get_collider()
 	if cursor_object == null:
 		crosshair.material.set("shader_parameter/color_id", 0)

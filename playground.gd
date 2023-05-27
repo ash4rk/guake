@@ -29,6 +29,7 @@ func _on_start_server():
 
 func add_player(peer_id):
 	var player = Player.instantiate()
+	player.player = peer_id
 	player.name = str(peer_id)
 	add_child(player)
 
