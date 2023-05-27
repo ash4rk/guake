@@ -2305,11 +2305,14 @@ ammo = 99
 
 [node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_hl1ab")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0777168, -0.236788, -0.126612)
-visible = false
 damage = 7
+
+[node name="M4A1" parent="RotationHelper/PlayerEyes/WeaponHolder/AssaultRifle" index="0"]
+transform = Transform3D(-1, 1.13231e-11, 2.53518e-06, 0, 1, -4.46638e-06, -2.53518e-06, -4.46638e-06, -1, 0, 0, 0)
 
 [node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_ar017")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.182, -0.121, -0.268)
+visible = false
 firerate = 0.3
 
 [node name="Barrel" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base" index="0"]
@@ -2390,4 +2393,5 @@ bus = &"SFX"
 
 [connection signal="animation_finished" from="RotationHelper/PlayerEyes/WeaponAnimationPlayer" to="RotationHelper/PlayerEyes/WeaponHolder" method="_on_weapon_animation_player_animation_finished"]
 
+[editable path="RotationHelper/PlayerEyes/WeaponHolder/AssaultRifle"]
 [editable path="RotationHelper/PlayerEyes/WeaponHolder/Shotgun"]
