@@ -15,7 +15,6 @@ func _process(delta):
 	if Input.is_action_pressed("shoot") and can_fire:
 		fire(delta)
 
-
 func fire(_delta):
 	play_shoot_effects.rpc()
 	can_fire = false

@@ -5,13 +5,17 @@ extends Node3D
 enum WEAPONS {PISTOL, ASSAULT_RIFLE, SHOTGUN, BAZOOKA, SNIPER_RIFLE}
 
 @export var anim_player: AnimationPlayer
+@export var ray_cast: RayCast3D
+@export var player: Player
 
 var current_weapon = 1
+
 @onready var pistol = $Pistol
 @onready var assault_rifle = $AssaultRifle
 @onready var shotgun = $Shotgun
 
 func _ready():
+	print(anim_player)
 	weapon_switch()
 
 func _input(_event):

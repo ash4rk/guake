@@ -88,7 +88,6 @@ ammo = 999
 max_ammo = 999
 spare_ammo = 999
 ammo_per_shot = 1
-full_auto = true
 reload_time = 1.0
 firerate = 0.1
 

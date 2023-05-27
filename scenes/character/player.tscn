@@ -2104,7 +2104,6 @@ script = ExtResource("1_8a3qu")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.06, 0)
-visible = false
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
 bones/0/name = "root"
@@ -2230,28 +2229,28 @@ bones/17/name = "legIK.l"
 bones/17/parent = 0
 bones/17/rest = Transform3D(-0.999252, 0, 0.0386603, -0.0386603, 0, -0.999252, 0, -1, 0, 0.128412, 0.125094, -0.0927095)
 bones/17/enabled = true
-bones/17/position = Vector3(0.154098, 0.119244, 0.135688)
+bones/17/position = Vector3(0.161997, 0.133525, 0.032992)
 bones/17/rotation = Quaternion(0.0327174, 0.769197, -0.631397, 0.0927568)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "kneePole.l"
 bones/18/parent = 0
 bones/18/rest = Transform3D(-0.998481, 5.58793e-09, -0.0550946, -0.0550946, -2.38419e-07, 0.998481, -1.86265e-09, 1, 1.19209e-07, 0.0985763, 0.486968, 0.615828)
 bones/18/enabled = true
-bones/18/position = Vector3(0.146189, 0.498748, 0.603395)
+bones/18/position = Vector3(0.123439, 0.493119, 0.609335)
 bones/18/rotation = Quaternion(0.0194863, -0.706838, -0.706838, 0.0194863)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/name = "legIK.r"
 bones/19/parent = 0
 bones/19/rest = Transform3D(-0.999252, 0, -0.0386603, 0.0386603, 0, -0.999252, 0, -1, 0, -0.128412, 0.125094, -0.0927095)
 bones/19/enabled = true
-bones/19/position = Vector3(-0.0935088, 0.43917, 0.104039)
+bones/19/position = Vector3(-0.0965535, 0.39335, 0.234293)
 bones/19/rotation = Quaternion(0.0748651, 0.623749, -0.775504, 0.0626571)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "kneePole.r"
 bones/20/parent = 0
 bones/20/rest = Transform3D(-0.998481, -5.58793e-09, 0.0550946, 0.0550946, -2.38419e-07, 0.998481, 1.86265e-09, 1, 1.19209e-07, -0.0985763, 0.486968, 0.615828)
 bones/20/enabled = true
-bones/20/position = Vector3(-0.126359, 0.493842, 0.608573)
+bones/20/position = Vector3(-0.149109, 0.499471, 0.602633)
 bones/20/rotation = Quaternion(0.0194863, 0.706838, 0.706838, 0.0194863)
 bones/20/scale = Vector3(1, 1, 1)
 
@@ -2283,29 +2282,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0960009, 1.6089, -0.300534)
 
 [node name="PlayerEyes" type="Camera3D" parent="RotationHelper"]
 
-[node name="WeaponHolder" type="Node3D" parent="RotationHelper/PlayerEyes" node_paths=PackedStringArray("anim_player")]
+[node name="WeaponHolder" type="Node3D" parent="RotationHelper/PlayerEyes" node_paths=PackedStringArray("anim_player", "ray_cast", "player")]
 transform = Transform3D(1, 0, 0, 0, 0.999967, -0.00809819, 0, 0.00809819, 0.999967, 0.00517711, 0.0232285, 0.112658)
 script = ExtResource("3_1c76r")
 anim_player = NodePath("../WeaponAnimationPlayer")
+ray_cast = NodePath("../RayCast3D")
+player = NodePath("../../..")
 
 [node name="Pistol" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_x8lwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077, -0.144, -0.297)
 visible = false
+script = null
 
 [node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Pistol"]
 transform = Transform3D(0.00353221, -0.00155617, -0.0408179, 0.0109804, 0.0394984, -0.000555658, 0.0393441, -0.0108838, 0.00381961, -0.0186482, 0.0407852, 0.0256923)
 material_override = SubResource("StandardMaterial3D_n7hoi")
 mesh = SubResource("QuadMesh_s55ed")
 
-[node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" node_paths=PackedStringArray("ray_cast", "anim_player", "player") instance=ExtResource("4_hl1ab")]
+[node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_hl1ab")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0777168, -0.236788, -0.126612)
 damage = 7
 ammo = 20
 max_ammo = 1000
 spare_ammo = 0
-ray_cast = NodePath("../../RayCast3D")
-anim_player = NodePath("../../WeaponAnimationPlayer")
-player = NodePath("../../../..")
 
 [node name="Shotgun" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("5_ar017")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.206, -0.183, -0.327)

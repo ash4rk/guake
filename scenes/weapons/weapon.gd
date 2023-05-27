@@ -7,15 +7,14 @@ class_name Weapon
 @export var max_ammo: int
 @export var spare_ammo: int
 @export var ammo_per_shot: int
-@export var full_auto: bool
 @export var reload_time: float
 @export var firerate: float
-@export var shotgun : bool
-@export var ray_cast: RayCast3D
-@export var anim_player: AnimationPlayer
-@export var player: Player
 
-var vertical_recoil : int = 0
+@onready var weapon_holder: WeaponHolder = get_parent()
+@onready var ray_cast: RayCast3D = weapon_holder.ray_cast
+@onready var anim_player: AnimationPlayer = weapon_holder.anim_player
+@onready var player: Player = weapon_holder.player
+
 var can_fire = true
 var is_reloading = false
 
@@ -25,6 +24,7 @@ func _ready():
 func fire(_delta):
 	player.emit_signal("ammo_changed", ammo)
 
+# Not yet in use
 func reload():
 	is_reloading = true
 	can_fire = false
