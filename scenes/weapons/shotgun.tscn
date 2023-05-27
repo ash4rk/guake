@@ -411,6 +411,7 @@ light_color = Color(1, 1, 0, 1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("5_2bx71")
+volume_db = -33.065
 max_db = 0.0
 bus = &"SFX"
 
