@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/weapons/shotgun.gd" id="2_0u81f"]
 [ext_resource type="Texture2D" uid="uid://bhkxcf1jlhy4p" path="res://assets/double_barrel.png" id="2_r6k1s"]
 [ext_resource type="Texture2D" uid="uid://b5pdaiktxkupc" path="res://assets/star_04.png" id="4_ys0r5"]
-[ext_resource type="AudioStream" uid="uid://b5soic6wo1anq" path="res://assets/shotgun_shot.mp3" id="5_fycwj"]
-[ext_resource type="AudioStream" uid="uid://lexa0bw5lt2q" path="res://assets/shotgun_reload.mp3" id="6_2c1a7"]
+[ext_resource type="AudioStream" uid="uid://b5soic6wo1anq" path="res://assets/sfx/shotgun_shot.mp3" id="5_2bx71"]
+[ext_resource type="AudioStream" uid="uid://lexa0bw5lt2q" path="res://assets/sfx/shotgun_reload.mp3" id="6_jt5c0"]
 [ext_resource type="AudioStream" uid="uid://dgyd6x4n6yk8w" path="res://assets/sfx/hurt_sound.wav" id="6_wkog0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k88pw"]
@@ -298,7 +298,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.4],
+"args": [0.0],
 "method": &"play"
 }]
 }
@@ -410,12 +410,12 @@ visible = false
 light_color = Color(1, 1, 0, 1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
-stream = ExtResource("5_fycwj")
+stream = ExtResource("5_2bx71")
 max_db = 0.0
 bus = &"SFX"
 
 [node name="ReloadAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]
-stream = ExtResource("6_2c1a7")
+stream = ExtResource("6_jt5c0")
 max_db = 0.0
 bus = &"SFX"
 
