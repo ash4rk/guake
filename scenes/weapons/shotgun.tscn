@@ -291,14 +291,14 @@ tracks/8/keys = {
 tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("AudioStreamPlayer3D")
+tracks/9/path = NodePath("ReloadAudioStreamPlayer3D")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.0],
+"args": [0.4],
 "method": &"play"
 }]
 }
@@ -384,11 +384,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k88pw")
 surface_material_override/0 = SubResource("StandardMaterial3D_xdhgh")
 
 [node name="Shell_Left" parent="Base/Barrel" index="0"]
-transform = Transform3D(0.203254, 0.022711, 0.0572307, -0.0879282, -0.0164576, 0.128164, 0.0521529, -0.116258, -0.00696301, -0.460306, 0.000513375, 4.04247)
+transform = Transform3D(0.203254, 0.022711, 0.0572307, -0.0879283, -0.0164576, 0.128164, 0.0521529, -0.116258, -0.00696301, -0.460306, 0.000513375, 4.04247)
 surface_material_override/0 = SubResource("StandardMaterial3D_7twaq")
 
 [node name="Shell_Right" parent="Base/Barrel" index="1"]
-transform = Transform3D(0.215752, 0.0201656, 0.0435763, -0.0735058, -0.0110257, 0.125339, 0.043976, -0.117364, -0.00428753, 0.466958, 0.000513136, 4.04247)
+transform = Transform3D(0.215752, 0.0201655, 0.0435764, -0.0735058, -0.0110256, 0.125339, 0.043976, -0.117364, -0.00428754, 0.466958, 0.000513136, 4.04247)
 surface_material_override/0 = SubResource("StandardMaterial3D_q4tln")
 
 [node name="Trigger" parent="Base" index="1"]
