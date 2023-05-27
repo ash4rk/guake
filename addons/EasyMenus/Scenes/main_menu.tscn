@@ -36,7 +36,7 @@ horizontal_alignment = 1
 
 [node name="IPAddressLineEdit" type="LineEdit" parent="Content"]
 layout_mode = 2
-text = "localhost"
+text = "51.250.107.4"
 placeholder_text = "ip address"
 
 [node name="HSeparator" type="HSeparator" parent="Content"]

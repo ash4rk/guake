@@ -381,14 +381,15 @@ transform = Transform3D(0.134, 0, 0, 0, 0.168, 0, 0, 0, 0.134, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_k88pw")
 
 [node name="Barrel" parent="Base" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578286, -5.2917)
 surface_material_override/0 = SubResource("StandardMaterial3D_xdhgh")
 
 [node name="Shell_Left" parent="Base/Barrel" index="0"]
-transform = Transform3D(0.203254, 0.022711, 0.0572307, -0.0879283, -0.0164576, 0.128164, 0.0521529, -0.116258, -0.00696301, -0.460306, 0.000513375, 4.04247)
+transform = Transform3D(0.203254, 0.0227102, 0.0572306, -0.0879282, -0.0164574, 0.128164, 0.0521513, -0.116258, -0.00696317, -0.460306, 0.000513375, 4.04247)
 surface_material_override/0 = SubResource("StandardMaterial3D_7twaq")
 
 [node name="Shell_Right" parent="Base/Barrel" index="1"]
-transform = Transform3D(0.215752, 0.0201655, 0.0435764, -0.0735058, -0.0110256, 0.125339, 0.043976, -0.117364, -0.00428754, 0.466958, 0.000513136, 4.04247)
+transform = Transform3D(0.215752, 0.0201655, 0.0435768, -0.0735066, -0.0110257, 0.125339, 0.0439759, -0.117364, -0.00428749, 0.466958, 0.000513136, 4.04247)
 surface_material_override/0 = SubResource("StandardMaterial3D_q4tln")
 
 [node name="Trigger" parent="Base" index="1"]

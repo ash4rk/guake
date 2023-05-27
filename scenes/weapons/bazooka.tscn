@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2pvlrdkfls14"]
+[gd_scene load_steps=11 format=3 uid="uid://c2pvlrdkfls14"]
 
 [ext_resource type="Script" path="res://scenes/weapons/bazooka.gd" id="1_0ys21"]
 [ext_resource type="PackedScene" uid="uid://cm5hyb880r3n7" path="res://assets/bazooka_1.glb" id="1_a6jwx"]
@@ -10,6 +10,25 @@ albedo_texture = ExtResource("2_6p8p6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q33vp"]
 albedo_texture = ExtResource("2_6p8p6")
+
+[sub_resource type="Animation" id="Animation_ql2ht"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_o20jy"]
+resource_name = "reload"
+length = 2.0
+
+[sub_resource type="Animation" id="Animation_kudp2"]
+resource_name = "shoot"
+length = 0.2
+step = 0.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tprh3"]
+_data = {
+"RESET": SubResource("Animation_ql2ht"),
+"reload": SubResource("Animation_o20jy"),
+"shoot": SubResource("Animation_kudp2")
+}
 
 [node name="Bazooka" type="Node3D"]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
@@ -30,6 +49,12 @@ material_override = SubResource("StandardMaterial3D_q33vp")
 
 [node name="Cube" parent="RightPart" index="2"]
 visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_tprh3")
+}
 
 [editable path="LeftPart"]
 [editable path="RightPart"]

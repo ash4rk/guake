@@ -2301,7 +2301,13 @@ player = NodePath("../../..")
 [node name="Pistol" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_x8lwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.086, -0.154, -0.333)
 visible = false
-ammo = 99
+ammo = 0
+
+[node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Pistol"]
+transform = Transform3D(0.00561506, -2.42036e-05, -0.0272448, 9.92493e-06, 0.0246646, -2.66123e-05, 0.0739832, -1.4718e-06, 0.00206779, -0.0207883, 0.0544815, -0.0270692)
+material_override = SubResource("StandardMaterial3D_n7hoi")
+mesh = SubResource("QuadMesh_s55ed")
+skeleton = NodePath("../../SniperRifle")
 
 [node name="AssaultRifle" parent="RotationHelper/PlayerEyes/WeaponHolder" instance=ExtResource("4_hl1ab")]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0777168, -0.236788, -0.126612)
@@ -2320,10 +2326,10 @@ firerate = 0.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578286, -5.2917)
 
 [node name="Shell_Left" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base/Barrel" index="0"]
-transform = Transform3D(0.203254, 0.022711, 0.0572307, -0.0879282, -0.0164576, 0.128164, 0.0521529, -0.116258, -0.00696301, -0.460306, 0.000513375, 4.04247)
+transform = Transform3D(0.203254, 0.0227102, 0.0572306, -0.0879282, -0.0164574, 0.128164, 0.0521513, -0.116258, -0.00696317, -0.460306, 0.000513375, 4.04247)
 
 [node name="Shell_Right" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base/Barrel" index="1"]
-transform = Transform3D(0.215752, 0.0201656, 0.0435763, -0.0735058, -0.0110257, 0.125339, 0.043976, -0.117364, -0.00428753, 0.466958, 0.000513136, 4.04247)
+transform = Transform3D(0.215752, 0.0201655, 0.0435768, -0.0735066, -0.0110257, 0.125339, 0.0439759, -0.117364, -0.00428749, 0.466958, 0.000513136, 4.04247)
 
 [node name="WorkInProgressSign" type="MeshInstance3D" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun"]
 transform = Transform3D(0.0758312, 0, -0.203968, 0, 0.208, 0, 0.379498, 0, 0.0407568, -0.108, 0.105, -0.217)
@@ -2370,7 +2376,6 @@ target_position = Vector3(0, -100, 0)
 target_position = Vector3(0, -100, 0)
 
 [node name="RayCast3D5" type="RayCast3D" parent="RotationHelper/PlayerEyes/RayContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, -100, 0)
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="RotationHelper/PlayerEyes"]

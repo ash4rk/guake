@@ -695,6 +695,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.606, 30.733, 5.85771)
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("12_g4wwp")]
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
