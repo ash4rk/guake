@@ -18,7 +18,7 @@ const MOUSE_SENSITIVITY = 0.05
 
 # Stats
 const MAX_HEALTH: int = 100
-var is_dead: bool = false
+var is_dead: bool = false : set = _set_is_dead
 
 # Movement
 @onready var camera: Camera3D = $RotationHelper/PlayerEyes
@@ -136,6 +136,9 @@ func _revive():
 	heal(MAX_HEALTH)
 	$FullPlayerShape.rotation = Vector3.ZERO
 	$ReviveAudioStreamPlayer3D.play()
+func _set_is_dead(value):
+	is_dead = value
+	input.is_dead = value
 
 @rpc("any_peer")
 func receive_damage(damage_value: int = 1, from: Vector3 = Vector3.ZERO):

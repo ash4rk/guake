@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://ch5oisfcsw46e"]
+[gd_scene load_steps=61 format=3 uid="uid://ch5oisfcsw46e"]
 
 [ext_resource type="Script" path="res://scenes/character/player.gd" id="1_8a3qu"]
 [ext_resource type="Texture2D" uid="uid://b28qt1sqto3v2" path="res://assets/anime_char_texture.png" id="2_2x7hy"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://rw7gdui8lu3n" path="res://addons/EasyMenus/Scenes/pause_menu.tscn" id="11_3gb05"]
 [ext_resource type="AudioStream" uid="uid://724xa5v42cyn" path="res://assets/sfx/death_sound.wav" id="11_cvcy2"]
 [ext_resource type="Script" path="res://scenes/character/player_input.gd" id="12_hbmjb"]
+[ext_resource type="Texture2D" uid="uid://d03lg7xrqm0ji" path="res://assets/blood_vignette.png" id="12_xig8j"]
 [ext_resource type="AudioStream" uid="uid://cide6o8fg6w86" path="res://assets/sfx/revive_sound.wav" id="12_xs4cw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tadeg"]
@@ -2080,6 +2081,193 @@ _data = {
 "shoot": SubResource("Animation_uyjw3")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8htcf"]
+bg_color = Color(0.913725, 0, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wruky"]
+bg_color = Color(0, 0.756863, 0.329412, 1)
+
+[sub_resource type="Animation" id="Animation_p4a5d"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TintOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodOverlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_k8fh1"]
+resource_name = "blood_on_screen"
+length = 0.2
+step = 0.002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BloodOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.196),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodOverlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.196),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.52549), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8wmmu"]
+resource_name = "blue_tint_flash"
+length = 0.2
+step = 0.002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TintOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TintOverlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.046, 0.2),
+"transitions": PackedFloat32Array(1, 1.62451, 1, 0.707107),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.113725, 1, 1, 0.843137), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w4o5s"]
+resource_name = "green_tint_flash"
+length = 0.2
+step = 0.002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TintOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TintOverlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.046, 0.2),
+"transitions": PackedFloat32Array(1, 1.62451, 1, 0.707107),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.113725, 1, 0, 0.396078), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_01urh"]
+resource_name = "red_tint_fill"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TintOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TintOverlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.4, 3.3, 4.9),
+"transitions": PackedFloat32Array(1, 1.62451, 1, 1, 0.707107),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.890196, 0, 0.117647, 0.490196), Color(1, 0.113725, 0.156863, 0.380392), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vkuk0"]
+resource_name = "yellow_tint_flash"
+length = 0.2
+step = 0.002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TintOverlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TintOverlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.046, 0.2),
+"transitions": PackedFloat32Array(1, 1.62451, 1, 0.707107),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.898039, 0.85098, 0, 0.396078), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2bf8w"]
+_data = {
+"RESET": SubResource("Animation_p4a5d"),
+"blood_on_screen": SubResource("Animation_k8fh1"),
+"blue_tint_flash": SubResource("Animation_8wmmu"),
+"green_tint_flash": SubResource("Animation_w4o5s"),
+"red_tint_fill": SubResource("Animation_01urh"),
+"yellow_tint_flash": SubResource("Animation_vkuk0")
+}
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lrkwm"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -2409,6 +2597,106 @@ grow_vertical = 2
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_3gb05")]
 visible = false
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_8htcf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wruky")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SpaceControl" type="Control" parent="CanvasLayer/HUD/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 80
+text = "100"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "30"
+horizontal_alignment = 2
+
+[node name="Separation" type="Label" parent="CanvasLayer/HUD/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "/"
+horizontal_alignment = 1
+
+[node name="SpareAmmoLabel" type="Label" parent="CanvasLayer/HUD/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 80
+text = "30"
+
+[node name="BloodOverlay" type="TextureRect" parent="CanvasLayer/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_xig8j")
+
+[node name="TintOverlay" type="ColorRect" parent="CanvasLayer/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HUD"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_2bf8w")
+}
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_lrkwm")
