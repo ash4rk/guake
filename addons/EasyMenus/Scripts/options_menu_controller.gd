@@ -11,11 +11,11 @@ const HSliderWLabel = preload("res://addons/EasyMenus/Scripts/slider_w_labels.gd
 @onready var vsync_check_button: CheckButton = $%VSyncCheckButton
 @onready var anti_aliasing_2d_option_button: OptionButton = $%AntiAliasing2DOptionButton
 @onready var anti_aliasing_3d_option_button: OptionButton = $%AntiAliasing3DOptionButton
+@onready var ip_address_line_edit: LineEdit = $MarginContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer/IPAddressLineEdit
 
 var sfx_bus_index
 var music_bus_index
 var config = ConfigFile.new()
-
 
 # Emits close signal and saves the options
 func go_back():
@@ -50,6 +50,7 @@ func save_options():
 	config.set_value(OptionsConstants.section_name, OptionsConstants.vsync_key, vsync_check_button.button_pressed)
 	config.set_value(OptionsConstants.section_name, OptionsConstants.msaa_2d_key, anti_aliasing_2d_option_button.get_selected_id())
 	config.set_value(OptionsConstants.section_name, OptionsConstants.msaa_3d_key, anti_aliasing_3d_option_button.get_selected_id())
+	config.set_value(OptionsConstants.section_name, OptionsConstants.ip_address, ip_address_line_edit.text)
 	
 	config.save(OptionsConstants.config_file_name)
 
@@ -65,6 +66,7 @@ func load_options():
 	var vsync = config.get_value(OptionsConstants.section_name, OptionsConstants.vsync_key, true)
 	var msaa_2d = config.get_value(OptionsConstants.section_name, OptionsConstants.msaa_2d_key, 0)
 	var msaa_3d = config.get_value(OptionsConstants.section_name, OptionsConstants.msaa_3d_key, 0)
+	var ip_address = config.get_value(OptionsConstants.section_name, OptionsConstants.ip_address, "")
 
 	sfx_volume_slider.hslider.value = sfx_volume
 	music_volume_slider.hslider.value = music_volume
@@ -79,6 +81,8 @@ func load_options():
 	anti_aliasing_2d_option_button.emit_signal("item_selected", msaa_2d)
 	anti_aliasing_3d_option_button.selected = msaa_3d
 	anti_aliasing_3d_option_button.emit_signal("item_selected", msaa_3d)
+	
+	ip_address_line_edit.text = ip_address
 
 func _on_fullscreen_check_button_toggled(button_pressed):
 	if button_pressed:

@@ -6,9 +6,10 @@ signal start_server
 @onready var start_game_button: Button = $%StartGameButton
 @onready var options_menu: Control = $%OptionsMenu
 @onready var content: Control = $%Content 
-@onready var ip_address: LineEdit =  $Content/IPAddressLineEdit
+@onready var config = ConfigFile.new()
 
 func _ready():
+	var err = config.load(OptionsConstants.config_file_name)
 	start_game_button.grab_focus()
 
 func quit():
@@ -25,7 +26,8 @@ func close_options():
 	options_menu.hide()
 
 func _on_start_game_button_pressed():
-	emit_signal("start_client", ip_address.text)
+	var ip_address = config.get_value(OptionsConstants.section_name, OptionsConstants.ip_address, "")
+	emit_signal("start_client", ip_address)
 	$MainMenuAudioStreamPlayer.stop()
 	$InGameMusicAudioStreamPlayer.play()
 	self.visible = false

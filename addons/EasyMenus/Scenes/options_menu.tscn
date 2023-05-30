@@ -195,6 +195,26 @@ layout_mode = 2
 theme_override_constants/separation = 50
 theme_override_styles/separator = SubResource("StyleBoxEmpty_x77mt")
 
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="IPAddressLabel" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+text = "IP Address"
+
+[node name="IPAddressLineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+text = "localhost"
+placeholder_text = "ip address"
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_x77mt")
+
 [node name="BackButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
