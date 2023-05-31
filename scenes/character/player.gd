@@ -40,6 +40,7 @@ var jumper_velocity: = Vector3.ZERO
 @onready var crosshair: ColorRect = $CanvasLayer/Crosshair
 var health = MAX_HEALTH
 
+# TODO: Abolish full Player authority, give authority only for inputs
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 
