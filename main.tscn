@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj8hnxepfypxn"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_lr56h"]
+[ext_resource type="PackedScene" uid="uid://dq6tvhqcy2aps" path="res://addons/EasyMenus/Scenes/main_menu.tscn" id="2_kyltb"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_lr56h")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/levels/only_level.tscn")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
+
+[node name="UI" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" parent="UI" instance=ExtResource("2_kyltb")]
+layout_mode = 1
