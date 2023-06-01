@@ -2316,7 +2316,6 @@ script = ExtResource("1_8a3qu")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.06, 0)
-visible = false
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
 bones/0/name = "root"
@@ -2526,7 +2525,7 @@ ray_container = NodePath("../../RayContainer")
 firerate = 0.3
 
 [node name="Shell_Left" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base/Barrel" index="0"]
-transform = Transform3D(0.203254, 0.0227102, 0.0572306, -0.087928, -0.0164574, 0.128164, 0.0521513, -0.116258, -0.00696317, -0.460306, 0.000513375, 4.04247)
+transform = Transform3D(0.203254, 0.0227102, 0.0572306, -0.087928, -0.0164574, 0.128164, 0.0521512, -0.116258, -0.00696317, -0.460306, 0.000513375, 4.04247)
 
 [node name="Shell_Right" parent="RotationHelper/PlayerEyes/WeaponHolder/Shotgun/Base/Barrel" index="1"]
 transform = Transform3D(0.215752, 0.0201655, 0.0435769, -0.0735066, -0.0110257, 0.125339, 0.043976, -0.117364, -0.0042875, 0.466958, 0.000513136, 4.04247)

@@ -34,7 +34,8 @@ var jumper_velocity: = Vector3.ZERO
 # Player synchronized input.
 @onready var input = $PlayerInput
 
-# Stats
+# Components
+@onready var char_mesh: MeshInstance3D = $Armature/Skeleton3D/LowPolyNormalMan
 @onready var weapon_holder: WeaponHolder = $RotationHelper/PlayerEyes/WeaponHolder
 @onready var ray_cast: RayCast3D = $RotationHelper/PlayerEyes/RayCast3D
 @onready var crosshair: ColorRect = $CanvasLayer/Crosshair
@@ -47,10 +48,8 @@ func _enter_tree():
 func _ready():
 	$AnimationTree.active = true
 	if not is_multiplayer_authority():
-		$Armature.show()
 		return
-	else:
-		$Armature.hide()
+	char_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	camera.current = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
