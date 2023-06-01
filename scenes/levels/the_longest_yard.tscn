@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bncaql8n6ykwg"]
 
-[ext_resource type="Script" path="res://playground.gd" id="1_d23cl"]
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_5qkm3"]
 [ext_resource type="Sky" uid="uid://cjo7qd4myoana" path="res://assets/SpaceSkyBox.res" id="2_epyt7"]
 [ext_resource type="Material" uid="uid://bly25nr0aqsv3" path="res://addons/ThirdPersonTemplate/Environments/Materials/BlueGrid.material" id="3_w7hre"]
 [ext_resource type="Material" uid="uid://d3up41bo0vjj0" path="res://addons/ThirdPersonTemplate/Environments/Materials/OrangeGrid.material" id="4_0j706"]
@@ -220,7 +220,7 @@ _data = {
 size = Vector3(2000, 1200, 2000)
 
 [node name="World" type="Node"]
-script = ExtResource("1_d23cl")
+script = ExtResource("1_5qkm3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.568257, -0.499272, 0.654073, 0.000216422, 0.794977, 0.60664, -0.822851, -0.344586, 0.451859, 0, 2.76815, 9.26053)
