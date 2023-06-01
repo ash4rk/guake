@@ -17,7 +17,6 @@ func _ready():
 		_on_start_server()
 
 func _on_start_client(ip_address: String):
-	print(ip_address)
 	enet_peer.create_client(ip_address, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	$CanvasLayer/HUD.visible = true
