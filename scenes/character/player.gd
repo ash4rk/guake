@@ -119,7 +119,7 @@ func _input(event):
 		self.rotate_y(deg_to_rad(event.relative.x * MOUSE_SENSITIVITY * -1))
 
 		var camera_rot = rotation_helper.rotation_degrees
-		camera_rot.x = clamp(camera_rot.x, -70, 70)
+		camera_rot.x = clamp(camera_rot.x, -89, 89)
 		rotation_helper.rotation_degrees = camera_rot
 
 func _handle_death(from_death):
