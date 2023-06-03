@@ -2305,6 +2305,9 @@ properties/10/sync = true
 properties/11/path = NodePath("RotationHelper/PlayerEyes/WeaponHolder/SniperRifle:visible")
 properties/11/spawn = true
 properties/11/sync = true
+properties/12/path = NodePath(".:is_dead")
+properties/12/spawn = true
+properties/12/sync = true
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d47xn"]
 properties/0/path = NodePath(".:input_dir")
