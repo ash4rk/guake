@@ -2,6 +2,7 @@ extends Control
 
 signal start_client(ip_address)
 signal start_server
+signal start_offline
 
 @onready var start_game_button: Button = $%StartGameButton
 @onready var options_menu: Control = $%OptionsMenu
@@ -34,4 +35,10 @@ func _on_start_game_button_pressed():
 
 func _on_server_button_pressed():
 	emit_signal("start_server")
+	self.visible = false
+
+func _on_start_offline_button_pressed():
+	emit_signal("start_offline")
+	$MainMenuAudioStreamPlayer.stop()
+	$InGameMusicAudioStreamPlayer.play()
 	self.visible = false

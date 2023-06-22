@@ -13,6 +13,7 @@ var enet_peer = ENetMultiplayerPeer.new()
 func _ready():
 	$CanvasLayer/MainMenu.start_client.connect(_on_start_client)
 	$CanvasLayer/MainMenu.start_server.connect(_on_start_server)
+	$CanvasLayer/MainMenu.start_offline.connect(_on_start_offline)
 	if OS.get_cmdline_user_args().has("--server"):
 		_on_start_server()
 
@@ -73,3 +74,7 @@ func _on_death_area_3d_body_entered(body):
 
 func _on_player_teleported():
 	hud_anim_player.play("blue_tint_flash")
+
+func _on_start_offline():
+	add_player("1")
+	$CanvasLayer/HUD.visible = true

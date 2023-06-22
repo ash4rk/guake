@@ -50,6 +50,18 @@ focus_previous = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 30
 text = "Start"
 
+[node name="StartOfflineButton" type="Button" parent="Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 30
+text = "Start Offline"
+
 [node name="OptionsButton" type="Button" parent="Content"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
@@ -71,6 +83,10 @@ focus_next = NodePath("../StartGameButton")
 focus_previous = NodePath("../OptionsButton")
 theme_override_font_sizes/font_size = 30
 text = "Quit"
+
+[node name="EmptySpace" type="Control" parent="Content"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
 
 [node name="ServerButton" type="Button" parent="Content"]
 custom_minimum_size = Vector2(350, 0)
@@ -100,6 +116,7 @@ volume_db = -10.0
 bus = &"Music"
 
 [connection signal="pressed" from="Content/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="Content/StartOfflineButton" to="." method="_on_start_offline_button_pressed"]
 [connection signal="pressed" from="Content/OptionsButton" to="." method="open_options"]
 [connection signal="pressed" from="Content/QuitButton" to="." method="quit"]
 [connection signal="pressed" from="Content/ServerButton" to="." method="_on_server_button_pressed"]
